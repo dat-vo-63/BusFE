@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row main-content bg-success text-center">
+        <div class="col-md-4 text-center company__info">
+            <span class="company__logo">
+                <img class="container" src="./../../../assets/img/logo.png" alt="">
+            </span>
+
+            <h4 class="company_title">Dat Bus</h4>
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+            <div class="container-fluid">
+                <div class="login-title">
+                    <h2>Register</h2>
+                </div>
+                <div class="">
+                    <form class="form-group" [formGroup]="registerForm" (ngSubmit)="addNewCustomer()">
+                        <div class="row">
+                            <input type="text" name="username" id="username" class="form__input" placeholder="Username"
+                                formControlName="username"
+                                [ngClass]="{error : getControl('username')?.errors && getControl('username')?.touched}">
+                            <div *ngIf="getControl('username')?.errors && getControl('username')?.touched">
+                                <span class="text-danger" *ngIf="getControl('username')?.errors?.['required']">*Username
+                                    is required</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="password" name="password" id="password" class="form__input"
+                                placeholder="Password" formControlName="password">
+                        </div>
+                        <div class="row">
+                            <input type="password" name="confirmPassword" id="confirmPassword" class="form__input"
+                                placeholder="Confirm Password" formControlName="confirmPassword">
+                        </div>
+                        <div class="row">
+                            <input type="text" name="phoneNumber" id="phoneNumber" class="form__input"
+                                placeholder="Phone Number" formControlName="phoneNumber">
+                        </div>
+
+                        <div class="green">
+                            <input type="submit" value="Register" class="btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
