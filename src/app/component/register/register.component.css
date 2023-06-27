@@ -106,6 +106,15 @@ label {
     margin-left: 0.5rem;
 }
 
-.error {
-    border: 1px solid red;
+.disable-btn {
+    transition: all .5s ease;
+    width: 70%;
+    border-radius: 30px;
+    color: black;
+    font-weight: 600;
+    background-color: #c5c5c5;
+    border: 1px solid black;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    cursor: default;
 }

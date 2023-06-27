@@ -11,9 +11,11 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.required]),
-    password: new FormControl(),
-    confirmPassword: new FormControl(),
-    phoneNumber: new FormControl()
+    password: new FormControl("", [Validators.required]),
+    confirmPassword: new FormControl("", [Validators.required]),
+    phoneNumber: new FormControl("", [Validators.required, Validators.pattern("[0-9]*"), Validators.maxLength(12)]),
+    email: new FormControl("", [Validators.required, Validators.email]),
+    address: new FormControl("", [Validators.required])
   })
   constructor(
     private customerService: CustomerService,
@@ -32,7 +34,9 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  addNewCustomer() {
-
+  addNewCustomer():any {
+    this.customerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.phoneNumber, this.registerForm.value.email, this.registerForm.value.address).subscribe(res=>{
+      return res
+    })
   }
 }
