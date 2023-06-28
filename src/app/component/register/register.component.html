@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container-fluid">
     <div class="row main-content bg-success text-center">
         <div class="col-md-4 text-center company__info">
@@ -15,40 +16,48 @@
                 <div class="">
                     <form class="form-group" [formGroup]="registerForm" (ngSubmit)="addNewCustomer()">
                         <div class="row">
-                            <input type="text" name="username" id="username" class="form__input" placeholder="Username" formControlName="username">
+                            <input type="text" name="username" id="username" class="form__input" placeholder="Username"
+                                formControlName="username">
                             <div *ngIf="getControl('username')?.errors && getControl('username')?.touched">
-                                <span class="text-danger" *ngIf="getControl('username')?.errors?.['required']">*Username is required</span>
+                                <span class="text-danger" *ngIf="getControl('username')?.errors?.['required']">*Username
+                                    is required</span>
                             </div>
                         </div>
                         <div class="row">
                             <input type="password" name="password" id="password" class="form__input"
                                 placeholder="Password" formControlName="password">
                             <div *ngIf="getControl('password')?.errors && getControl('password')?.touched">
-                                <span class="text-danger" *ngIf="getControl('password')?.errors?.['required']">*Confirm Password is required</span>
-                                
+                                <span class="text-danger" *ngIf="getControl('password')?.errors?.['required']">*Confirm
+                                    Password is required</span>
+
                             </div>
                         </div>
                         <div class="row">
                             <input type="password" name="confirmPassword" id="confirmPassword" class="form__input"
                                 placeholder="Confirm Password" formControlName="confirmPassword">
-                                <div *ngIf="getControl('confirmPassword')?.errors && getControl('confirmPassword')?.touched">
-                                    <span class="text-danger" *ngIf="getControl('confirmPassword')?.errors?.['required']">*Password is required</span>
-                                </div>
+                            <div
+                                *ngIf="getControl('confirmPassword')?.errors && getControl('confirmPassword')?.touched">
+                                <span class="text-danger"
+                                    *ngIf="getControl('confirmPassword')?.errors?.['required']">*Password is
+                                    required</span>
+                            </div>
                         </div>
                         <div class="row">
                             <input type="text" name="phoneNumber" id="phoneNumber" class="form__input"
                                 placeholder="Phone Number" formControlName="phoneNumber" maxlength="12">
                             <div *ngIf="getControl('phoneNumber')?.errors && getControl('phoneNumber')?.touched">
-                                <span class="text-danger" *ngIf="getControl('phoneNumber')?.errors?.['required']">*Phone number
+                                <span class="text-danger" *ngIf="getControl('phoneNumber')?.errors?.['required']">*Phone
+                                    number
                                     is required</span>
-                                <span class="text-danger" *ngIf="getControl('phoneNumber')?.errors?.['pattern']">*Phone number
+                                <span class="text-danger" *ngIf="getControl('phoneNumber')?.errors?.['pattern']">*Phone
+                                    number
                                     must be a number</span>
                             </div>
                         </div>
 
                         <div class="row">
-                            <input type="text" name="email" id="email" class="form__input"
-                                placeholder="Email" formControlName="email">
+                            <input type="text" name="email" id="email" class="form__input" placeholder="Email"
+                                formControlName="email">
                             <div *ngIf="getControl('email')?.errors && getControl('email')?.touched">
                                 <span class="text-danger" *ngIf="getControl('email')?.errors?.['required']">*Email
                                     is required</span>
@@ -59,11 +68,15 @@
                         <div class="row">
                             <textarea type="text" name="address" id="address" class="form__input"
                                 placeholder="Enter your address" formControlName="address"></textarea>
-                            <span class="text-danger" *ngIf="getControl('address')?.errors?.['required']">*Address
-                                is required</span>
+                            <div *ngIf="getControl('address')?.errors && getControl('address')?.touched">
+                                <span class="text-danger" *ngIf="getControl('address')?.errors?.['required']">*Address
+                                    is required</span>
+
+                            </div>
                         </div>
                         <div class="green">
-                            <input type="submit" value="Register" [ngClass]="{'disable-btn' : registerForm.status === 'INVALID', 'btn': registerForm.status != 'INVALID'}">
+                            <input type="submit" value="Register"
+                                [ngClass]="{'disable-btn' : registerForm.status === 'INVALID', 'btn': registerForm.status != 'INVALID'}">
                         </div>
                     </form>
                 </div>

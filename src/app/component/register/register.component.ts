@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
   }
 
   getControl(name: any): AbstractControl | null {
@@ -34,8 +33,8 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  addNewCustomer():any {
-    this.customerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.phoneNumber, this.registerForm.value.email, this.registerForm.value.address).subscribe(res=>{
+  addNewCustomer(): any {
+    this.customerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.phoneNumber, this.registerForm.value.email, this.registerForm.value.address).subscribe(res => {
       return res
     })
   }
