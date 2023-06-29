@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,10 @@ export class CustomerService {
     
     }, {responseType: 'text'})
   }
-  login(email: string, password: string): Observable<string> {
-    return this.http.post(`${this.baseUrl}/${this.loginUrl}`,{
+  login(email: string, password: string): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/${this.loginUrl}`,{
       "email":email,
       "password":password
-    }, {responseType: 'text'})
+    })
   }
 }

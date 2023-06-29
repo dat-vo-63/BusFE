@@ -12,6 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { CustomerLayoutComponent } from './layout/customer/customer-layout/customer-layout.component';
+import {Component} from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import { ChangeProfileComponent } from './component/change-profile/change-profile.component';
+import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.component';
+import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +29,9 @@ import { CustomerLayoutComponent } from './layout/customer/customer-layout/custo
     RegisterComponent,
     HeaderComponent,
     CustomerLayoutComponent,
+    ChangeProfileComponent,
+    AdminLayoutComponent,
+    AddScheduleComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,11 @@ import { CustomerLayoutComponent } from './layout/customer/customer-layout/custo
     NoopAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

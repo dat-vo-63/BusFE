@@ -9,10 +9,18 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   currentUrl: string = ""
+  username: string|null = ""
+  role: string|null = ""
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.currentUrl = this.router.url
+    this.username = localStorage.getItem("username")
+    this.role = localStorage.getItem("role")
+  }
+
+  logout():void{
+    localStorage.clear()
   }
 
 }

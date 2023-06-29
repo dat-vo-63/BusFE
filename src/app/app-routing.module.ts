@@ -4,6 +4,9 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { CustomerLayoutComponent } from './layout/customer/customer-layout/customer-layout.component';
 import { HomeComponent } from './component/home/home.component';
+import { ChangeProfileComponent } from './component/change-profile/change-profile.component';
+import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.component';
+import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +17,22 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent
+      },
+      {
+        path: 'change-profile',
+        component: ChangeProfileComponent
+      }
+    ]
+  },
+  {
+    path: 'admin', component: AdminLayoutComponent, children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'add-schedule',
+        component: AddScheduleComponent
       }
     ]
   }

@@ -1,0 +1,28 @@
+.container{
+    margin-top: 100px;
+}
+
+.bus-list{
+    margin-top: 100px;
+    display: flex;
+    max-width: 100%;
+}
+.bus-infor{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bus-img{
+    max-width: 100px;
+}
+
+.bus-name{
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.start-time{
+    margin-right: 10px;
+    margin-top: 10px;
+}

@@ -7,16 +7,18 @@ export class User {
     address: string
     isActive: string
     userBalance: number
+    role: string
 
     constructor(
         userId: number,
-    userName: string,
-    email: string,
-    password: string,
-    phoneNumber: string,
-    address: string,
-    isActive: string,
-    userBalance: number
+        userName: string,
+        email: string,
+        password: string,
+        phoneNumber: string,
+        address: string,
+        isActive: string,
+        userBalance: number,
+        role: string
     ){
         this.userId = userId
         this.userName = userName
@@ -26,5 +28,6 @@ export class User {
         this.address = address
         this.isActive = isActive
         this.userBalance = userBalance
+        this.role = role
     }
 }

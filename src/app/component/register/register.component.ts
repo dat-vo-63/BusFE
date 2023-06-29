@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/service/customer.service';
 
 @Component({
@@ -20,9 +21,13 @@ export class RegisterComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private fb: FormBuilder,
+    private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if(localStorage.getItem("username")!==null){
+      this.router.navigateByUrl("/customer/home")
+    }
   }
 
   getControl(name: any): AbstractControl | null {

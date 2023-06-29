@@ -1,1 +1,30 @@
-<app-header></app-header>
+<div class="container">
+    <div class="input-date">
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+    
+    <div class="bus-list">
+        <img src="../../../assets/img/logo.png" alt="" class="bus-img">
+        <div class="bus-infor">
+            <h4 class="bus-name">Bus name</h4>
+            <span class="departure">Departure</span>
+            <div class="mr-auto"></div>
+            <span class="destination">Destination</span>
+            <div class="bus-schedule">
+                <a class="start-time btn btn-outline-primary">10:00</a>
+                <a class="start-time btn btn-outline-primary">12:00</a>
+                <a class="start-time btn btn-outline-primary">10:00</a>
+                <a class="start-time btn btn-outline-primary">12:00</a>
+                <a class="start-time btn btn-outline-primary">10:00</a>
+                <a class="start-time btn btn-outline-primary">12:00</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
