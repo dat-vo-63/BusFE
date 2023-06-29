@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,14 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { CustomerLayoutComponent } from './layout/customer/customer-layout/customer-layout.component';
-import {Component} from '@angular/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
+import { Component } from '@angular/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { ChangeProfileComponent } from './component/change-profile/change-profile.component';
 import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.component';
 import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
+import { JsonPipe } from '@angular/common';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,12 @@ import { AddScheduleComponent } from './component/add-schedule/add-schedule.comp
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgbTimepickerModule,
+    JsonPipe,
+    TimepickerModule,
+    MatSelectModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
