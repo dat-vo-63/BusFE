@@ -7,6 +7,7 @@ import { HomeComponent } from './component/home/home.component';
 import { ChangeProfileComponent } from './component/change-profile/change-profile.component';
 import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.component';
 import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
+import { BusManagementComponent } from './layout/admin/bus-management/bus-management.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'add-schedule',
         component: AddScheduleComponent
+      },
+      {
+        path: 'bus-management',
+        component: BusManagementComponent
       }
     ]
   }

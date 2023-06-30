@@ -11,11 +11,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav my-2 my-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" routerLinkActive="link-active" href="/customer/home" routerLink="/customer/home">Home <span class="sr-only">(current)</span></a>
-                
+                <a class="nav-link" routerLinkActive="link-active" href="/customer/home"
+                    routerLink="/customer/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLinkActive="link-active" href="/admin/add-schedule" routerLink="/admin/add-schedule" *ngIf="role === 'Admin'">Add Schedule <span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLinkActive="link-active" href="/admin/add-schedule"
+                    routerLink="/admin/add-schedule" *ngIf="role === 'Admin'">Add Schedule <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLinkActive="link-active" href="/admin/bus-management"
+                    routerLink="/admin/bus-management" *ngIf="role === 'Admin'">Bus Management<span
+                        class="sr-only">(current)</span></a>
             </li>
         </ul>
         <div class="mr-auto"></div>
@@ -25,12 +32,15 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span *ngIf="username===null">Login/Sign up</span>
                     <span *ngIf="username!==null">{{username}}</span>
-                    
+
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/login" *ngIf="currentUrl !== '/login' && username ===null">Login</a>
-                    <a class="dropdown-item" routerLink="/register" *ngIf="currentUrl !== '/register' && username ===null">Sign up</a>
-                    <a class="dropdown-item" routerLink="/customer/change-profile" *ngIf="username !==null">Change profile</a>
+                    <a class="dropdown-item" routerLink="/login"
+                        *ngIf="currentUrl !== '/login' && username ===null">Login</a>
+                    <a class="dropdown-item" routerLink="/register"
+                        *ngIf="currentUrl !== '/register' && username ===null">Sign up</a>
+                    <a class="dropdown-item" routerLink="/customer/change-profile" *ngIf="username !==null">Change
+                        profile</a>
                     <a class="dropdown-item" href="/login" *ngIf="username !==null" (click)="logout()">Logout</a>
                 </div>
 

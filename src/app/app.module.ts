@@ -23,6 +23,10 @@ import { AddScheduleComponent } from './component/add-schedule/add-schedule.comp
 import { JsonPipe } from '@angular/common';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { BusListComponent } from './component/bus-list/bus-list.component';
+import { CreateNewBusComponent } from './component/create-new-bus/create-new-bus.component';
+import { EditBusInfoComponent } from './component/edit-bus-info/edit-bus-info.component';
+import { BusManagementComponent } from './layout/admin/bus-management/bus-management.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { MatSelectModule } from '@angular/material/select';
     ChangeProfileComponent,
     AdminLayoutComponent,
     AddScheduleComponent,
+    BusListComponent,
+    CreateNewBusComponent,
+    EditBusInfoComponent,
+    BusManagementComponent,
   ],
   imports: [
     BrowserModule,
