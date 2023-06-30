@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Schedule } from '../model/schedule';
+import { Bus } from '../model/bus';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Schedule } from '../model/schedule';
 export class AdminService {
   baseUrl = "http://localhost:9090"
   addScheduleUrl = "add/schedule"
+  findAllBusUrl = "findAllBus"
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +24,12 @@ export class AdminService {
       "bus": {
         "busId": busId
       }
+    })
+  }
+
+  findAllBus(): Observable<Array<Bus>>{
+    return this.http.get<Array<Bus>>(`${this.baseUrl}/${this.findAllBusUrl}`,{
+
     })
   }
 }
