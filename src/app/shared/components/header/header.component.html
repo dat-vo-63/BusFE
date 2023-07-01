@@ -24,6 +24,11 @@
                     routerLink="/admin/bus-management" *ngIf="role === 'Admin'">Bus Management<span
                         class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLinkActive="link-active" href="/admin/schedule-management"
+                    routerLink="/admin/schedule-management" *ngIf="role === 'Admin'">Schedule Management<span
+                        class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <div class="mr-auto"></div>
         <ul class="navbar-nav my-2 my-lg-0">
@@ -39,7 +44,11 @@
                         *ngIf="currentUrl !== '/login' && username ===null">Login</a>
                     <a class="dropdown-item" routerLink="/register"
                         *ngIf="currentUrl !== '/register' && username ===null">Sign up</a>
-                    <a class="dropdown-item" routerLink="/customer/change-profile" *ngIf="username !==null">Change
+                    <a class="dropdown-item" routerLink="/customer/change-profile"
+                        *ngIf="username !== null && role === 'User'">Change
+                        profile</a>
+                    <a class="dropdown-item" routerLink="/admin/change-profile"
+                        *ngIf="username !== null && role === 'Admin'">Change
                         profile</a>
                     <a class="dropdown-item" href="/login" *ngIf="username !==null" (click)="logout()">Logout</a>
                 </div>

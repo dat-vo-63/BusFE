@@ -1,4 +1,11 @@
-<form [formGroup]="addNewBusForm" (ngSubmit)="addNewBus()">
+<ng-template #newBus let-modal>
+    <form [formGroup]="addNewBusForm" (ngSubmit)="addNewBus()">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">New Operator</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="modal-body">
             <div class="form-group">
                 <label for="username">Name</label>
@@ -54,8 +61,8 @@
         </div>
         <div class="modal-footer">
             <button type="submit" data-dismiss="modal" class="btn btn-info">Submit</button>
-            <button type="button" class="btn btn-outline-dark" (click)="modalForm.close()">Cancel</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancel</button>
         </div>
         <!-- <span class="text-danger">{{msg}}</span> -->
-        
     </form>
+</ng-template>

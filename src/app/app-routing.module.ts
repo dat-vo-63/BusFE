@@ -7,7 +7,8 @@ import { HomeComponent } from './component/home/home.component';
 import { ChangeProfileComponent } from './component/change-profile/change-profile.component';
 import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.component';
 import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
-import { BusManagementComponent } from './layout/admin/bus-management/bus-management.component';
+import { BusManagementComponent } from './component/bus-management/bus-management.component';
+import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,16 +33,23 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: 'change-profile',
+        component: ChangeProfileComponent
+      },
+      {
         path: 'add-schedule',
         component: AddScheduleComponent
       },
       {
         path: 'bus-management',
         component: BusManagementComponent
+      },
+      {
+        path: 'schedule-management',
+        component: ScheduleManagementComponent
       }
     ]
   }
-
 ];
 
 @NgModule({

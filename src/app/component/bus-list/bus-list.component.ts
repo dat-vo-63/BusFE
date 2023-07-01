@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Bus } from 'src/app/model/bus';
 import { AdminService } from 'src/app/service/admin.service';
@@ -8,15 +9,32 @@ import { AdminService } from 'src/app/service/admin.service';
   templateUrl: './bus-list.component.html',
   styleUrls: ['./bus-list.component.css']
 })
-export class BusListComponent implements  OnInit{
-  
+export class BusListComponent implements OnInit {
+
   listBus?: Array<Bus>
   closeResult: string = ''
+  addNewBusForm: FormGroup = new FormGroup({
+    name: new FormControl(""),
+    seats: new FormControl(),
+    departure: new FormControl(""),
+    destination: new FormControl("")
+  })
 
-  constructor(private adminService: AdminService, private modalService: NgbModal){}
+  editBusForm: FormGroup = new FormGroup({
+    name: new FormControl(""),
+    seats: new FormControl(),
+    departure: new FormControl(""),
+    destination: new FormControl("")
+  })
+
+  constructor(private adminService: AdminService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.adminService.findAllBus().subscribe(res=>{
+    this.getAllBus()
+  }
+
+  getAllBus() {
+    this.adminService.getAllBus().subscribe(res => {
       this.listBus = res
     })
   }
@@ -37,4 +55,23 @@ export class BusListComponent implements  OnInit{
       return `with: ${reason}`;
     }
   }
+
+  addNewBus() {
+    this.adminService.addBus(this.addNewBusForm.value.name, this.addNewBusForm.value.seats, this.addNewBusForm.value.departure, this.addNewBusForm.value.destination).subscribe(res => {
+
+      this.ngOnInit()
+      return res
+    })
+    this.modalService.dismissAll()
+  }
+
+  editBusInfo() {
+    this.adminService.editBus()
+    this.modalService.dismissAll()
+  }
+
+  onDelete() {
+
+  }
+
 }

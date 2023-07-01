@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './component/register/register.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { CustomerLayoutComponent } from './layout/customer/customer-layout/customer-layout.component';
@@ -20,13 +20,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ChangeProfileComponent } from './component/change-profile/change-profile.component';
 import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.component';
 import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
-import { JsonPipe } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { BusListComponent } from './component/bus-list/bus-list.component';
 import { CreateNewBusComponent } from './component/create-new-bus/create-new-bus.component';
 import { EditBusInfoComponent } from './component/edit-bus-info/edit-bus-info.component';
-import { BusManagementComponent } from './layout/admin/bus-management/bus-management.component';
+import { BusManagementComponent } from './component/bus-management/bus-management.component';
+import { ListScheduleComponent } from './component/list-schedule/list-schedule.component';
+import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { BusManagementComponent } from './layout/admin/bus-management/bus-manage
     CreateNewBusComponent,
     EditBusInfoComponent,
     BusManagementComponent,
+    ListScheduleComponent,
+    ScheduleManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,7 @@ import { BusManagementComponent } from './layout/admin/bus-management/bus-manage
     JsonPipe,
     TimepickerModule,
     MatSelectModule,
+    NgbDatepickerModule,
 
   ],
   providers: [],

@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { CustomerService } from 'src/app/service/customer.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-change-profile',
@@ -10,7 +11,7 @@ import { CustomerService } from 'src/app/service/customer.service';
   styleUrls: ['./change-profile.component.css']
 })
 export class ChangeProfileComponent implements OnInit {
-  user?:User
+  user?: User
   changeProfileForm: FormGroup = new FormGroup({
     username: new FormControl(""),
     password: new FormControl(""),
@@ -23,14 +24,14 @@ export class ChangeProfileComponent implements OnInit {
     private customerService: CustomerService,
     private fb: FormBuilder,
     private router: Router,
-    
+    private userService: UserServiceService
   ) { }
-  
+
   ngOnInit(): void {
-    if(localStorage.getItem("username")===null){
+    if (localStorage.getItem("username") === null) {
       this.router.navigateByUrl("/login")
     }
-    this.customerService.findUserByEmail(localStorage.getItem("email")).subscribe(res=>{
+    this.customerService.findUserByEmail(localStorage.getItem("email")).subscribe(res => {
       this.user = res
       this.changeProfileForm.patchValue({
         username: this.user?.userName,
@@ -38,15 +39,15 @@ export class ChangeProfileComponent implements OnInit {
         address: this.user?.address
       })
     })
-    
+
   }
 
-  getControl(name: any): AbstractControl | null{
+  getControl(name: any): AbstractControl | null {
     return this.changeProfileForm.get(name)
   }
 
-  changeProfile(){
-    this.customerService.updateProfile(this.changeProfileForm.value.username, localStorage.getItem("email"), this.changeProfileForm.value.password, this.changeProfileForm.value.phoneNumber, this.changeProfileForm.value.address).subscribe(res=>{
+  changeProfile() {
+    this.userService.updateProfile(this.changeProfileForm.value.username, localStorage.getItem("email"), this.changeProfileForm.value.password, this.changeProfileForm.value.phoneNumber, this.changeProfileForm.value.address).subscribe(res => {
       console.log(res)
     })
   }

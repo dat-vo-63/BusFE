@@ -11,6 +11,9 @@ export class AdminService {
   baseUrl = "http://localhost:9090"
   addScheduleUrl = "add/schedule"
   findAllBusUrl = "findAllBus"
+  addBusUrl = "add"
+  updatePofileUrl = "update-user"
+  getAllScheduleUrl = ""
 
   constructor(private http: HttpClient) { }
 
@@ -27,9 +30,26 @@ export class AdminService {
     })
   }
 
-  findAllBus(): Observable<Array<Bus>>{
-    return this.http.get<Array<Bus>>(`${this.baseUrl}/${this.findAllBusUrl}`,{
+  getAllBus(): Observable<Array<Bus>> {
+    return this.http.get<Array<Bus>>(`${this.baseUrl}/${this.findAllBusUrl}`, {
 
     })
+  }
+
+  getAllSchedule() {
+    return this.http.get<Array<Schedule>>(`${this.baseUrl}/${this.getAllScheduleUrl}`)
+  }
+
+  addBus(name: string, seat: number, fromLocate: string, toLocate: string): Observable<Bus> {
+    return this.http.post<Bus>(`${this.baseUrl}/${this.addBusUrl}`, {
+      "name": name,
+      "seat": seat,
+      "fromLocate": fromLocate,
+      "toLocate": toLocate
+    })
+  }
+
+  editBus() {
+
   }
 }
