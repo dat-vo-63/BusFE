@@ -42,39 +42,48 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
+                <label for="startTime">Start Date</label>
                 <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="startTime"
-                        ngbDatepicker #d="ngbDatepicker" />
+                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="startDate"
+                        ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model"/>
                     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                         type="button"></button>
                 </div>
             </div>
             <div class="form-group">
-                <label for="endTime">End Time</label>
-                <div class="input-group">
-                    <input type="text" id="endTime" class="form-control" name="endTime" formControlName="endTime">
+                
+                <div class="time_picker">
+                    <div class="picker_group">
+                        <label class="date-label" for="startTime">Start Time</label>
+                        <timepicker id="startTime"  formControlName="startTime" [showMeridian]="false" [minuteStep]="1">
+                        </timepicker>
+                    </div>
+                    <div class="picker_group">
+                        <label class="date-label" for="endTime">End Time</label>
+                        <timepicker id="endTime" formControlName="endTime" [showMeridian]="false" [minuteStep]="1">
+                        </timepicker>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="departure">Total Seat</label>
+                <label for="departure">Departure</label>
                 <div class="input-group">
-                    <input id="totalSeat" class="form-control" name="totalSeat" formControlName="totalSeat">
+                    <input type="text" id="departure" class="form-control" name="departure" formControlName="departure">
                 </div>
             </div>
             <div class="form-group">
-                <label for="seatLeft">Seat Left</label>
+                <label for="destination">Destination</label>
                 <div class="input-group">
-                    <input id="seatLeft" class="form-control" name="seatLeft" formControlName="seatLeft">
+                    <input type="text" id="destination" class="form-control" name="destination" formControlName="destination">
                 </div>
             </div>
             <div class="form-group">
-                <label for="startDate">Start Date</label>
+                <label for="selectBus">Select Bus</label>
                 <div class="input-group">
-                    <input id="startDate" class="form-control" name="seatLeft" formControlName="startDate">
+                    <select id="selectBus" class="form-control" formControlName="bus">
+                        <option *ngFor="let b of listBus" [value]="b.busId">{{b.name}}</option>
+                    </select>
                 </div>
-            </div>
-            <div class="form-group">
-
             </div>
         </div>
         <div class="modal-footer">

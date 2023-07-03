@@ -24,3 +24,8 @@
 ::ng-deep ngb-modal-backdrop {
     z-index: 1050 !important;
 }
+
+.time_picker{
+    display: flex;
+    justify-content: space-between;
+}

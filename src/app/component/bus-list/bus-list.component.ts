@@ -57,7 +57,7 @@ export class BusListComponent implements OnInit {
   }
 
   addNewBus() {
-    this.adminService.addBus(this.addNewBusForm.value.name, this.addNewBusForm.value.seats, this.addNewBusForm.value.departure, this.addNewBusForm.value.destination).subscribe(res => {
+    this.adminService.addBus(this.addNewBusForm.value.name, this.addNewBusForm.value.seats).subscribe(res => {
 
       this.ngOnInit()
       return res
@@ -66,7 +66,7 @@ export class BusListComponent implements OnInit {
   }
 
   editBusInfo() {
-    this.adminService.editBus()
+    // this.adminService.editBus()
     this.modalService.dismissAll()
   }
 
