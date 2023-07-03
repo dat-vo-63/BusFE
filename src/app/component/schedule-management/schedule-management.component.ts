@@ -70,6 +70,7 @@ export class ScheduleManagementComponent implements OnInit {
     this.adminService.addschedule(`${this.createSchedule.value.startTime.getHours().toString()}:${this.createSchedule.value.startTime.getMinutes().toString()}`, `${this.createSchedule.value.endTime.getHours().toString()}:${this.createSchedule.value.endTime.getMinutes().toString()}`, `${this.createSchedule.value.startDate.year}/${this.createSchedule.value.startDate.month}/${this.createSchedule.value.startDate.day}`, this.createSchedule.value.departure, this.createSchedule.value.destination, this.createSchedule.value.bus).subscribe(res=>{
       this.modalService.dismissAll()
       this.ngOnInit()
+      return res
     })
   }
 

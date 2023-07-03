@@ -14,6 +14,8 @@ export class AdminService {
   addBusUrl = "add"
   updatePofileUrl = "update-user"
   getAllScheduleUrl = "find-all-schedule"
+  showScheduleByDateUrl = "get-schedule-start-date"
+  addTicketUrl = "add-ticket"
 
   constructor(private http: HttpClient) { }
 
@@ -49,7 +51,15 @@ export class AdminService {
     }, {responseType: 'text'})
   }
 
-  // editBus(name: string, seat:number): Observable<string>{
+  showScheduleByDate(startDate: string): Observable<Array<Schedule>>{
+    return this.http.put<Array<Schedule>>(`${this.baseUrl}/${this.showScheduleByDateUrl}`,{
+      "startDate": startDate
+    })
+  }
 
-  // }
+  addTicket(seatList: Array<number>): Observable<string>{
+    return this.http.post(`${this.baseUrl}/${this.addTicketUrl}`,{
+      seatList
+    },{responseType: 'text'})
+  }
 }

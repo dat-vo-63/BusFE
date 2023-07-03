@@ -1,3 +1,5 @@
+import { Seat } from "./seat"
+
 export class Schedule {
     scheduleId:number
     startTime: string
@@ -6,7 +8,8 @@ export class Schedule {
     seatLeft: number
     startDate: number
     departure: string
-    destination: string
+    destinations: string
+    seats: Array<Seat>
 
     constructor(
         scheduleId:number,
@@ -16,7 +19,8 @@ export class Schedule {
         seatLeft: number,
         startDate: number,
         departure: string,
-        destination: string
+        destinations: string,
+        seats: Array<Seat>
     ){
         this.scheduleId = scheduleId
         this.startTime = startTime
@@ -25,6 +29,7 @@ export class Schedule {
         this.seatLeft = seatLeft
         this.startDate = startDate
         this.departure = departure
-        this.destination = destination
+        this.destinations = destinations
+        this.seats = seats
     }
 }

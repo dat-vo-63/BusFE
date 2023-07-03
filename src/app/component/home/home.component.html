@@ -1,30 +1,57 @@
 <div class="container">
     <div class="input-date">
-        <mat-form-field>
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-    </div>
-    
-    <div class="bus-list">
-        <img src="../../../assets/img/logo.png" alt="" class="bus-img">
-        <div class="bus-infor">
-            <h4 class="bus-name">Bus name</h4>
-            <span class="departure">Departure</span>
-            <div class="mr-auto"></div>
-            <span class="destination">Destination</span>
-            <div class="bus-schedule">
-                <a class="start-time btn btn-outline-primary">10:00</a>
-                <a class="start-time btn btn-outline-primary">12:00</a>
-                <a class="start-time btn btn-outline-primary">10:00</a>
-                <a class="start-time btn btn-outline-primary">12:00</a>
-                <a class="start-time btn btn-outline-primary">10:00</a>
-                <a class="start-time btn btn-outline-primary">12:00</a>
+        <form class="find-schedule" [formGroup]="findScheduleForm">
+            <div class="form-group">
+                <label for="startTime">Start Date</label>
+                <div class="input-group">
+                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="startDate"
+                        ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model"  (blur)="getAllScheduleByStartDate()"/>
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
+                        type="button"></button>
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="departure">Departure</label>
+                <div class="input-group">
+                    <input id="departure" class="form-control" name="departure" formControlName="departure">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <div class="input-group">
+                    <input id="destination" class="form-control" name="destination" formControlName="destination">
+                </div>
+            </div>
+        </form>
         
     </div>
+    
+    <div class="book-ticket" *ngFor="let s of listSchedule">
+        <div class="schedule-list">
+            <div class="bus-infor">
+                <h3 class="bus-name">Start Time : {{s.startTime}}</h3>
+                <span class="departure">Seat Left : {{s.seatLeft}}</span>
+                <span class="destination">Departure: {{s.departure}}</span>
+                <span class="destination">Destination: {{s.destinations}}</span>
+                
+            </div>
+            <button type="button" class="btn btn-success" (click)="isCollapsed = ! isCollapsed" [attr.aria-expanded]="!isCollapsed">
+            Select
+            </button>
+        </div>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+            <form [formGroup]="ticketBookingForm" (submit)="test()">
+                <div class="card" *ngFor="let seat of s.seats; let i = index">
+                    <div class="input-group-text">
+                      <input type="checkbox" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
+                      <label for="{{seat.seatId}}">{{seat.seatId}}</label>
+                    </div>
+                    <span type="text" class="form-control">{{i+1}}</span>
+                </div>
+                <button type="submit">Test</button>
+            </form>
+            
+        </div>
+    </div>
 </div>
+
