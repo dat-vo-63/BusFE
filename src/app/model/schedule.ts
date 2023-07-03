@@ -5,6 +5,8 @@ export class Schedule {
     totalSeat: number
     seatLeft: number
     startDate: number
+    departure: string
+    destination: string
 
     constructor(
         scheduleId:number,
@@ -12,7 +14,9 @@ export class Schedule {
         endTime: string,
         totalSeat: number,
         seatLeft: number,
-        startDate: number
+        startDate: number,
+        departure: string,
+        destination: string
     ){
         this.scheduleId = scheduleId
         this.startTime = startTime
@@ -20,5 +24,7 @@ export class Schedule {
         this.totalSeat = totalSeat
         this.seatLeft = seatLeft
         this.startDate = startDate
+        this.departure = departure
+        this.destination = destination
     }
 }

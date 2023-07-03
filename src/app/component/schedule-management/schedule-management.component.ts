@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ModalDismissReasons, NgbCalendar, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbCalendar, NgbDateStruct, NgbModal, NgbTimepicker } from '@ng-bootstrap/ng-bootstrap';
+import { Bus } from 'src/app/model/bus';
 import { Schedule } from 'src/app/model/schedule';
 import { AdminService } from 'src/app/service/admin.service';
 
@@ -13,13 +14,17 @@ export class ScheduleManagementComponent implements OnInit {
   schedule?: Array<Schedule>
   closeResult: string = ''
   model: NgbDateStruct
+  listBus?: Array<Bus>
 
   createSchedule: FormGroup = new FormGroup({
-    startTime: new FormControl(),
+    startTime: new FormControl(""),
     endTime: new FormControl(""),
     totalSeat: new FormControl(""),
     seatLeft: new FormControl(""),
-    startDate: new FormControl("")
+    startDate: new FormControl(""),
+    destination: new FormControl(""),
+    departure: new FormControl(""),
+    bus: new FormControl()
   })
 
   constructor(private adminService: AdminService, private modalService: NgbModal, private calendar: NgbCalendar) {
@@ -28,6 +33,7 @@ export class ScheduleManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSchedule()
+    this.getAllBus()
   }
 
   getAllSchedule() {
@@ -54,10 +60,20 @@ export class ScheduleManagementComponent implements OnInit {
     }
   }
 
-  addNewSchedule() {
+  getAllBus(){
+    this.adminService.getAllBus().subscribe(res=>{
+      this.listBus = res
+    })
   }
 
-  change() {
-    console.log(`${this.createSchedule.value.startTime.day.toString()}/${this.createSchedule.value.startTime.month.toString()}/${this.createSchedule.value.startTime.year.toString()}`)
+  addNewSchedule() {
+    this.adminService.addschedule(`${this.createSchedule.value.startTime.getHours().toString()}:${this.createSchedule.value.startTime.getMinutes().toString()}`, `${this.createSchedule.value.endTime.getHours().toString()}:${this.createSchedule.value.endTime.getMinutes().toString()}`, `${this.createSchedule.value.startDate.year}/${this.createSchedule.value.startDate.month}/${this.createSchedule.value.startDate.day}`, this.createSchedule.value.departure, this.createSchedule.value.destination, this.createSchedule.value.bus).subscribe(res=>{
+      this.modalService.dismissAll()
+      this.ngOnInit()
+    })
+  }
+
+  test(){
+    console.log()
   }
 }

@@ -13,17 +13,17 @@ export class AdminService {
   findAllBusUrl = "findAllBus"
   addBusUrl = "add"
   updatePofileUrl = "update-user"
-  getAllScheduleUrl = ""
+  getAllScheduleUrl = "find-all-schedule"
 
   constructor(private http: HttpClient) { }
 
-  addschedule(startTime: string, endTime: string, totalSeat: number, seatLeft: number, startDate: string, busId: number): Observable<Schedule> {
+  addschedule(startTime: string, endTime: string, startDate: string, departure: string, destination: string, busId: number): Observable<Schedule> {
     return this.http.post<Schedule>(`${this.baseUrl}/${this.addScheduleUrl}`, {
       "startTime": startTime,
       "endTime": endTime,
-      "totalSeat": totalSeat,
-      "seatLeft": seatLeft,
       "startDate": startDate,
+      "departure": departure,
+      "destinations": destination,
       "bus": {
         "busId": busId
       }
@@ -36,20 +36,20 @@ export class AdminService {
     })
   }
 
-  getAllSchedule() {
-    return this.http.get<Array<Schedule>>(`${this.baseUrl}/${this.getAllScheduleUrl}`)
-  }
+  getAllSchedule(): Observable<Array<Schedule>> {
+    return this.http.get<Array<Schedule>>(`${this.baseUrl}/${this.getAllScheduleUrl}`,{
 
-  addBus(name: string, seat: number, fromLocate: string, toLocate: string): Observable<Bus> {
-    return this.http.post<Bus>(`${this.baseUrl}/${this.addBusUrl}`, {
-      "name": name,
-      "seat": seat,
-      "fromLocate": fromLocate,
-      "toLocate": toLocate
     })
   }
 
-  editBus() {
-
+  addBus(name: string, seat: number): Observable<string> {
+    return this.http.post(`${this.baseUrl}/${this.addBusUrl}`, {
+      "name": name,
+      "seat": seat,
+    }, {responseType: 'text'})
   }
+
+  // editBus(name: string, seat:number): Observable<string>{
+
+  // }
 }
