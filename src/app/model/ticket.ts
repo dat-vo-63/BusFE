@@ -9,8 +9,8 @@ export class Ticket {
     constructor(
         ticketId: number,
         bill: Bill,
-        seats: []
-    ){
+        seats: Array<Seat>
+    ) {
         this.ticketId = ticketId
         this.bill = bill
         this.seats = seats

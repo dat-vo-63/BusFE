@@ -4,8 +4,9 @@
             <div class="form-group">
                 <label for="startTime">Start Date</label>
                 <div class="input-group">
-                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="startDate"
-                        ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model"  (blur)="getAllScheduleByStartDate()"/>
+                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                        formControlName="startDate" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model"
+                        (blur)="getAllScheduleByStartDate()" />
                     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                         type="button"></button>
                 </div>
@@ -23,35 +24,33 @@
                 </div>
             </div>
         </form>
-        
+
     </div>
-    
-    <div class="book-ticket" *ngFor="let s of listSchedule">
+
+    <div class="book-ticket" *ngFor="let schedule of listSchedule">
         <div class="schedule-list">
             <div class="bus-infor">
-                <h3 class="bus-name">Start Time : {{s.startTime}}</h3>
-                <span class="departure">Seat Left : {{s.seatLeft}}</span>
-                <span class="destination">Departure: {{s.departure}}</span>
-                <span class="destination">Destination: {{s.destinations}}</span>
-                
+                <h3 class="bus-name">Start Time : {{schedule.startTime}}</h3>
+                <span class="departure">Seat Left : {{schedule.seatLeft}}</span>
+                <span class="destination">Departure: {{schedule.departure}}</span>
+                <span class="destination">Destination: {{schedule.destinations}}</span>
+
             </div>
-            <button type="button" class="btn btn-success" (click)="isCollapsed = ! isCollapsed" [attr.aria-expanded]="!isCollapsed">
-            Select
+            <button type="button" class="btn btn-success" (click)="isCollapsed = ! isCollapsed"
+                [attr.aria-expanded]="!isCollapsed">
+                Select
             </button>
         </div>
         <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-            <form [formGroup]="ticketBookingForm" (submit)="test()">
-                <div class="card" *ngFor="let seat of s.seats; let i = index">
+            <form [formGroup]="myForm" (submit)="test()">
+                <div class="card" *ngFor="let seat of schedule.seats; let i = index">
                     <div class="input-group-text">
-                      <input type="checkbox" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
-                      <label for="{{seat.seatId}}">{{seat.seatId}}</label>
+                        <label for="{{seat.seatId}}">{{seat.seatId}}</label>
+                        <input type="checkbox" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
                     </div>
-                    <span type="text" class="form-control">{{i+1}}</span>
                 </div>
                 <button type="submit">Test</button>
             </form>
-            
         </div>
     </div>
 </div>
-

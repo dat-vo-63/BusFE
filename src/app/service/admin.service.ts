@@ -41,7 +41,7 @@ export class AdminService {
   }
 
   getAllSchedule(): Observable<Array<Schedule>> {
-    return this.http.get<Array<Schedule>>(`${this.baseUrl}/${this.getAllScheduleUrl}`,{
+    return this.http.get<Array<Schedule>>(`${this.baseUrl}/${this.getAllScheduleUrl}`, {
 
     })
   }
@@ -50,19 +50,18 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}/${this.addBusUrl}`, {
       "name": name,
       "seat": seat,
-    }, {responseType: 'text'})
+    }, { responseType: 'text' })
   }
 
-  showScheduleByDate(startDate: string): Observable<Array<Schedule>>{
-    return this.http.put<Array<Schedule>>(`${this.baseUrl}/${this.showScheduleByDateUrl}`,{
+  showScheduleByDate(startDate: string): Observable<Array<Schedule>> {
+    return this.http.put<Array<Schedule>>(`${this.baseUrl}/${this.showScheduleByDateUrl}`, {
       "startDate": startDate
     })
   }
 
-  addTicket(ticket: Ticket): Observable<string>{
-    var seats = ticket.seats
-    return this.http.post(`${this.baseUrl}/${this.addTicketUrl}`,{
+  addTicket(seats: Array<Seat>): Observable<string> {
+    return this.http.post(`${this.baseUrl}/${this.addTicketUrl}`, {
       seats
-    },{responseType: 'text'})
+    }, { responseType: 'text' })
   }
 }

@@ -1,37 +1,43 @@
-.container{
+.container {
     margin-top: 100px;
 }
 
-.schedule-list{
+.schedule-list {
     margin-top: 100px;
     display: flex;
     max-width: 100%;
     border: 1px solid #dde2e8;
     border-radius: 5px;
 }
-.bus-infor{
+
+.bus-infor {
     padding: 10px;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.bus-img{
+.bus-img {
     max-width: 100px;
 }
 
-.bus-name{
+.bus-name {
     font-weight: 500;
     margin-bottom: 0;
 }
 
-.start-time{
+.start-time {
     margin-right: 10px;
     margin-top: 10px;
 }
 
-.find-schedule{
+.find-schedule {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.input-group-text {
+    display: flex;
+    align-items: baseline;
 }
