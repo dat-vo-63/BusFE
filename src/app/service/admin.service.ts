@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Schedule } from '../model/schedule';
 import { Bus } from '../model/bus';
+import { Ticket } from '../model/ticket';
+import { Seat } from '../model/seat';
 
 @Injectable({
   providedIn: 'root'
@@ -57,9 +59,10 @@ export class AdminService {
     })
   }
 
-  addTicket(seatList: Array<number>): Observable<string>{
+  addTicket(ticket: Ticket): Observable<string>{
+    var seats = ticket.seats
     return this.http.post(`${this.baseUrl}/${this.addTicketUrl}`,{
-      seatList
+      seats
     },{responseType: 'text'})
   }
 }

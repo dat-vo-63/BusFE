@@ -3,6 +3,7 @@ import { EmailValidator, FormArray, FormBuilder, FormControl, FormGroup } from '
 import { Router } from '@angular/router';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Schedule } from 'src/app/model/schedule';
+import { Ticket } from 'src/app/model/ticket';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit{
   model: NgbDateStruct
   listSchedule?: Array<Schedule>
   public isCollapsed = true
+  ticket: Ticket = new Ticket(0,nul,[])
 
   findScheduleForm: FormGroup = new FormGroup({
     startDate: new FormControl(""),
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit{
   }
 
   test(){
-    this.adminService.addTicket(this.myForm.value.seats).subscribe(res=>{
+    this.adminService.addTicket().subscribe(res=>{
       return res
     })
   }
