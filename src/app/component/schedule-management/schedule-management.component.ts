@@ -12,18 +12,18 @@ import { AdminService } from 'src/app/service/admin.service';
 export class ScheduleManagementComponent implements OnInit {
   schedule?: Array<Schedule>
   closeResult: string = ''
-  model: NgbDateStruct
+  datePickerValue: string = ""
 
   createSchedule: FormGroup = new FormGroup({
     startTime: new FormControl(),
     endTime: new FormControl(""),
     totalSeat: new FormControl(""),
     seatLeft: new FormControl(""),
-    startDate: new FormControl("")
+    startDate: new FormControl(""),
+    busId: new FormControl("")
   })
 
   constructor(private adminService: AdminService, private modalService: NgbModal, private calendar: NgbCalendar) {
-    this.model = this.calendar.getToday()
   }
 
   ngOnInit(): void {
@@ -55,9 +55,10 @@ export class ScheduleManagementComponent implements OnInit {
   }
 
   addNewSchedule() {
+    this.datePickerValue = `${this.createSchedule.value.startTime.day.toString()}/${this.createSchedule.value.startTime.month.toString()}/${this.createSchedule.value.startTime.year.toString()}`
+    this.adminService.addschedule(this.datePickerValue, this.createSchedule.value.endTime, this.createSchedule.value.totalSeat, this.createSchedule.value.seatLeft, this.createSchedule.value.startDate, this.createSchedule.value.busId).subscribe(res => {
+
+    })
   }
 
-  change() {
-    console.log(`${this.createSchedule.value.startTime.day.toString()}/${this.createSchedule.value.startTime.month.toString()}/${this.createSchedule.value.startTime.year.toString()}`)
-  }
 }
