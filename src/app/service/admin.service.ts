@@ -5,6 +5,7 @@ import { Schedule } from '../model/schedule';
 import { Bus } from '../model/bus';
 import { Ticket } from '../model/ticket';
 import { Seat } from '../model/seat';
+import { Bill } from '../model/bill';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,8 @@ export class AdminService {
   getDestinationByStartDateUrl = "get-destinations"
   findScheduleByUrl = "find-schedule-start-time-depart-des"
   seatBookedUrl = "find-seat-booked-by-schedule"
+  addBillUrl = "addBill"
+  findBillByIdUrl = "find-bill"
 
   constructor(private http: HttpClient) { }
 
@@ -93,5 +96,16 @@ export class AdminService {
     return this.http.put<Array<number>>(`${this.baseUrl}/${this.seatBookedUrl}`,{
       "scheduleId":scheduleId
     })
+  }
+
+  addBill(ticketId: number, phoneNumber: string|null): Observable<Bill>{
+    return this.http.post<Bill>(`${this.baseUrl}/${this.addBillUrl}`,{
+      "ticketId":ticketId,
+      "phoneNumber": phoneNumber
+    })
+  }
+
+  getBillById(billId: number):Observable<Bill>{
+    return this.http.get<Bill>(`${this.baseUrl}/${this.findBillByIdUrl}/${billId}`)
   }
 }

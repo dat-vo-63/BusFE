@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("role",res.role)
         localStorage.setItem("username", res.userName)
         localStorage.setItem("email", res.email)
+        localStorage.setItem("phoneNumber",res.phoneNumber)
         if(this.user.role === "User"){
           this.router.navigateByUrl("customer/home")
         }

@@ -64,8 +64,7 @@
             <form [formGroup]="myForm" (submit)="addTicket()">
                 <div class="card" *ngFor="let seat of schedule.seats; let i = index">
                         <div class="input-group-text">
-                            <label for="{{seat.seatId}}">{{i+1}}</label>
-                            <!-- <mat-checkbox color="red" [value]="seat.seatId.toString()" id="{{seat.seatId}}" (change)="onChange($event)"></mat-checkbox> -->
+                            <label for="{{seat.seatId}}">{{seat.seatId}}</label>
                             <input type="checkbox" [disabled]="check(seatBookedList, seat.seatId)" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
                         </div>
                 </div>

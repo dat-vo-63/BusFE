@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   public isCollapsed = false
   isClicked = false
   seatBookedList?: Array<number>
+  billId?:number
 
   findScheduleForm: FormGroup = new FormGroup({
     startDate: new FormControl(""),
@@ -69,7 +70,10 @@ export class HomeComponent implements OnInit {
 
   addTicket() {
     this.adminService.addTicket(this.myForm.value.seats).subscribe(res=>{
-      return res
+      this.adminService.addBill(Number(res),localStorage.getItem("phoneNumber")).subscribe(res=>{
+        this.billId = res.billId
+        this.router.navigate(['/find-bill',this.billId])
+      })
     })
   }
 
@@ -94,4 +98,6 @@ export class HomeComponent implements OnInit {
   check(arr: Array<number>|undefined, seat: number){
     return arr?.includes(seat)
   }
+
+
 }
