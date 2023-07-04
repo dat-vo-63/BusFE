@@ -6,6 +6,7 @@ import { Bus } from '../model/bus';
 import { Ticket } from '../model/ticket';
 import { Seat } from '../model/seat';
 import { Bill } from '../model/bill';
+import { GetInfo } from '../model/get-info';
 
 @Injectable({
   providedIn: 'root'
@@ -72,40 +73,40 @@ export class AdminService {
     }, { responseType: 'text' })
   }
 
-  getAllDeparture(startDate: string): Observable<Array<string>>{
-    return this.http.put<Array<string>>(`${this.baseUrl}/${this.getDepartureByStartDateUrl}`,{
+  getAllDeparture(startDate: string): Observable<Array<string>> {
+    return this.http.put<Array<string>>(`${this.baseUrl}/${this.getDepartureByStartDateUrl}`, {
       "startDate": startDate
     })
   }
 
-  getAllDestination(startDate: string): Observable<Array<string>>{
-    return this.http.put<Array<string>>(`${this.baseUrl}/${this.getDestinationByStartDateUrl}`,{
+  getAllDestination(startDate: string): Observable<Array<string>> {
+    return this.http.put<Array<string>>(`${this.baseUrl}/${this.getDestinationByStartDateUrl}`, {
       "startDate": startDate
     })
   }
 
-  findScheduleBy(startDate: string, departure: string, destination: string): Observable<Array<Schedule>>{
-    return this.http.put<Array<Schedule>>(`${this.baseUrl}/${this.findScheduleByUrl}`,{
-      "startDate":startDate,
+  findScheduleBy(startDate: string, departure: string, destination: string): Observable<Array<Schedule>> {
+    return this.http.put<Array<Schedule>>(`${this.baseUrl}/${this.findScheduleByUrl}`, {
+      "startDate": startDate,
       "departure": departure,
       "destinations": destination
     })
   }
 
-  seatBooked(scheduleId: number): Observable<Array<number>>{
-    return this.http.put<Array<number>>(`${this.baseUrl}/${this.seatBookedUrl}`,{
-      "scheduleId":scheduleId
+  seatBooked(scheduleId: number): Observable<Array<number>> {
+    return this.http.put<Array<number>>(`${this.baseUrl}/${this.seatBookedUrl}`, {
+      "scheduleId": scheduleId
     })
   }
 
-  addBill(ticketId: number, phoneNumber: string|null): Observable<Bill>{
-    return this.http.post<Bill>(`${this.baseUrl}/${this.addBillUrl}`,{
-      "ticketId":ticketId,
+  addBill(ticketId: number, phoneNumber: string | null): Observable<Bill> {
+    return this.http.post<Bill>(`${this.baseUrl}/${this.addBillUrl}`, {
+      "ticketId": ticketId,
       "phoneNumber": phoneNumber
     })
   }
 
-  getBillById(billId: number):Observable<Bill>{
-    return this.http.get<Bill>(`${this.baseUrl}/${this.findBillByIdUrl}/${billId}`)
+  getBillById(billId: number): Observable<GetInfo> {
+    return this.http.get<GetInfo>(`${this.baseUrl}/${this.findBillByIdUrl}/${billId}`)
   }
 }

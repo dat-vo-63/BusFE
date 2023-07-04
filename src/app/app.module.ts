@@ -31,6 +31,7 @@ import { ListScheduleComponent } from './component/list-schedule/list-schedule.c
 import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
+import { BillManagementComponent } from './component/bill-management/bill-management.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { PayScreenComponent } from './component/pay-screen/pay-screen.component'
     BusManagementComponent,
     ListScheduleComponent,
     ScheduleManagementComponent,
-    PayScreenComponent
+    PayScreenComponent,
+    BillManagementComponent
   ],
   imports: [
     BrowserModule,

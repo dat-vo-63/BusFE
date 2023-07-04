@@ -46,7 +46,7 @@ const routes: Routes = [
         component: ScheduleManagementComponent
       },
       {
-        path: 'find-bill/:id',
+        path: 'find-bill',
         component: PayScreenComponent
       }
     ]
