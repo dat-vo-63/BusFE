@@ -37,10 +37,6 @@ const routes: Routes = [
         component: ChangeProfileComponent
       },
       {
-        path: 'add-schedule',
-        component: AddScheduleComponent
-      },
-      {
         path: 'bus-management',
         component: BusManagementComponent
       },

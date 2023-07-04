@@ -14,7 +14,7 @@ export class ChangeProfileComponent implements OnInit {
   user?: User
   changeProfileForm: FormGroup = new FormGroup({
     username: new FormControl(""),
-    password: new FormControl(""),
+    password: new FormControl(),
     confirmPassword: new FormControl(""),
     phoneNumber: new FormControl("", [Validators.pattern("[0-9]*"), Validators.maxLength(12)]),
     address: new FormControl(""),

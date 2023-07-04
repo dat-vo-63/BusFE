@@ -10,7 +10,7 @@ export class UserServiceService {
   updatePofileUrl = "update-user"
   constructor(private http: HttpClient) { }
 
-  updateProfile(username: string, email: string | null, password: string, phoneNumber: string, address: string): Observable<string> {
+  updateProfile(username: string, email: string | null, password: string|null, phoneNumber: string, address: string): Observable<string> {
     return this.http.post(`${this.baseUrl}/${this.updatePofileUrl}`, {
       "userName": username,
       "email": email,

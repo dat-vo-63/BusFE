@@ -18,6 +18,9 @@ export class AdminService {
   getAllScheduleUrl = "find-all-schedule"
   showScheduleByDateUrl = "get-schedule-start-date"
   addTicketUrl = "add-ticket"
+  getDepartureByStartDateUrl = "get-departure"
+  getDestinationByStartDateUrl = "get-destinations"
+  findScheduleByUrl = "find-schedule-start-time-depart-des"
 
   constructor(private http: HttpClient) { }
 
@@ -59,9 +62,33 @@ export class AdminService {
     })
   }
 
-  addTicket(seats: Array<Seat>): Observable<string> {
+  addTicket(seats: Array<Number>): Observable<string> {
     return this.http.post(`${this.baseUrl}/${this.addTicketUrl}`, {
       seats
     }, { responseType: 'text' })
+  }
+
+  getAllDeparture(startDate: string): Observable<Array<string>>{
+    return this.http.put<Array<string>>(`${this.baseUrl}/${this.getDepartureByStartDateUrl}`,{
+      "startDate": startDate
+    })
+  }
+
+  getAllDestination(startDate: string): Observable<Array<string>>{
+    return this.http.put<Array<string>>(`${this.baseUrl}/${this.getDestinationByStartDateUrl}`,{
+      "startDate": startDate
+    })
+  }
+
+  findScheduleBy(startDate: string, departure: string, destination: string): Observable<Array<Schedule>>{
+    return this.http.put<Array<Schedule>>(`${this.baseUrl}/${this.findScheduleByUrl}`,{
+      "startDate":startDate,
+      "departure": departure,
+      "destinations": destination
+    })
+  }
+
+  seatBooked(){
+    
   }
 }

@@ -9,6 +9,8 @@
                 <th>ID</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Departure</th>
+                <th>Destination</th>
                 <th>Total Seat</th>
                 <th>Seat Left</th>
                 <th>Start Date</th>
@@ -20,12 +22,14 @@
                 <th scope="row">{{s.scheduleId}}</th>
                 <td>{{s.startTime}}</td>
                 <td>{{s.endTime}}</td>
+                <td>{{s.departure}}</td>
+                <td>{{s.destinations}}</td>
                 <td>{{s.totalSeat}}</td>
                 <td>{{s.seatLeft}}</td>
                 <td>{{s.startDate}}</td>
                 <td>
                     <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i>Edit</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i>Danger</button>
+                    <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i>Delete</button>
                 </td>
             </tr>
         </tbody>

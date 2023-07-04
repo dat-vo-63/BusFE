@@ -3,7 +3,6 @@ export class Bus {
     name: string
     seat: number
 
-
     constructor(
         busId: number,
         name: string,
