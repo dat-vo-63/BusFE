@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './layout/admin/admin-layout/admin-layout.c
 import { AddScheduleComponent } from './component/add-schedule/add-schedule.component';
 import { BusManagementComponent } from './component/bus-management/bus-management.component';
 import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
+import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'schedule-management',
         component: ScheduleManagementComponent
+      },
+      {
+        path: 'pay-screen',
+        component: PayScreenComponent
       }
     ]
   }

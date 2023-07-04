@@ -55,21 +55,24 @@
                 <span class="busId">BusId: {{schedule.bus.busId}}</span>
                 <span class="bus-name">Bus Name: {{schedule.bus.name}}</span>
             </div>
-            <button type="button" class="btn btn-success" (click)="collapse.toggle()"
-                [attr.aria-expanded]="!isCollapsed">
+            <button type="button" class="btn btn-success" data-toggle="collapse" [attr.data-target]="'#ticketCollapse'+i" aria-expanded="false" aria-controls="collapseExample"
+                [attr.aria-expanded]="!isCollapsed" (click)="seatBooked(schedule.scheduleId)">
                 Select
             </button>
         </div>
-        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-            <form [formGroup]="myForm" (submit)="test()">
+        <div class="collapse" id="ticketCollapse{{i}}">
+            <form [formGroup]="myForm" (submit)="addTicket()">
                 <div class="card" *ngFor="let seat of schedule.seats; let i = index">
-                    <div class="input-group-text">
-                        <label for="{{seat.seatId}}">{{seat.seatId}}</label>
-                        <input type="checkbox" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
-                    </div>
+                        <div class="input-group-text">
+                            <label for="{{seat.seatId}}">{{i+1}}</label>
+                            <!-- <mat-checkbox color="red" [value]="seat.seatId.toString()" id="{{seat.seatId}}" (change)="onChange($event)"></mat-checkbox> -->
+                            <input type="checkbox" [disabled]="check(seatBookedList, seat.seatId)" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
+                        </div>
                 </div>
-                <button type="submit">Test</button>
+                <button type="submit" class="btn btn-success">Book Ticket</button>
             </form>
         </div>
     </div>
 </div>
+
+<!-- <input type="checkbox" [disabled]="seatBookedList" class="disabled-checkbox"> -->

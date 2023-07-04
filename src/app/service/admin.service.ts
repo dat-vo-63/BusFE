@@ -21,6 +21,7 @@ export class AdminService {
   getDepartureByStartDateUrl = "get-departure"
   getDestinationByStartDateUrl = "get-destinations"
   findScheduleByUrl = "find-schedule-start-time-depart-des"
+  seatBookedUrl = "find-seat-booked-by-schedule"
 
   constructor(private http: HttpClient) { }
 
@@ -88,7 +89,9 @@ export class AdminService {
     })
   }
 
-  seatBooked(){
-    
+  seatBooked(scheduleId: number): Observable<Array<number>>{
+    return this.http.put<Array<number>>(`${this.baseUrl}/${this.seatBookedUrl}`,{
+      "scheduleId":scheduleId
+    })
   }
 }

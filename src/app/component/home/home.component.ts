@@ -19,8 +19,9 @@ export class HomeComponent implements OnInit {
   listSchedule: Array<Schedule> = []
   departure?: Array<string>
   destination?: Array<string>
-  public isCollapsed = true
+  public isCollapsed = false
   isClicked = false
+  seatBookedList?: Array<number>
 
   findScheduleForm: FormGroup = new FormGroup({
     startDate: new FormControl(""),
@@ -31,7 +32,6 @@ export class HomeComponent implements OnInit {
   myForm: FormGroup
 
   constructor(private router: Router, private calendar: NgbCalendar, private adminService: AdminService, private fb: FormBuilder) {
-    // this.model = this.calendar.getToday()
     this.myForm = this.fb.group({
       seats: this.fb.array([])
     })
@@ -67,8 +67,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  test() {
-    console.log("changed")
+  addTicket() {
+    this.adminService.addTicket(this.myForm.value.seats).subscribe(res=>{
+      return res
+    })
   }
 
   onChange($event: any) {
@@ -83,5 +85,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  seatBooked(scheduleId: number){
+    this.adminService.seatBooked(scheduleId).subscribe(res=>{
+      this.seatBookedList = res
+    })
+  }
 
+  check(arr: Array<number>|undefined, seat: number){
+    return arr?.includes(seat)
+  }
 }

@@ -29,7 +29,8 @@ import { EditBusInfoComponent } from './component/edit-bus-info/edit-bus-info.co
 import { BusManagementComponent } from './component/bus-management/bus-management.component';
 import { ListScheduleComponent } from './component/list-schedule/list-schedule.component';
 import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ScheduleManagementComponent } from './component/schedule-management/sch
     EditBusInfoComponent,
     BusManagementComponent,
     ListScheduleComponent,
-    ScheduleManagementComponent
+    ScheduleManagementComponent,
+    PayScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,7 @@ import { ScheduleManagementComponent } from './component/schedule-management/sch
     TimepickerModule,
     MatSelectModule,
     NgbDatepickerModule,
-
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

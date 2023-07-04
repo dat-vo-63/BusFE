@@ -52,3 +52,29 @@
     color: #6c6868;
     margin-top: 30px;
 }
+
+.disabled-checkbox{
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
+}
+
+/* input[type="checkbox"] {
+    background: red;
+    color: white;
+  }
+  
+  input[type="checkbox"] {
+    appearance: none;
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+  }
+  
+  input[type="checkbox"]:after {
+    display: none;
+  }
+  
+  input[type="checkbox"]:checked:after {
+    display: block;
+  } */
