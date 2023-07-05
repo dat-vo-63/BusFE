@@ -10,6 +10,8 @@ import { AddScheduleComponent } from './component/add-schedule/add-schedule.comp
 import { BusManagementComponent } from './component/bus-management/bus-management.component';
 import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
 import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
+import { TransactionComponent } from './component/transaction/transaction.component';
+import { PaypalComponent } from './component/paypal/paypal.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -48,6 +50,14 @@ const routes: Routes = [
       {
         path: 'find-bill/:id',
         component: PayScreenComponent
+      },
+      {
+        path: 'transaction',
+        component: TransactionComponent
+      },
+      {
+        path: 'paypal/:id',
+        component: PaypalComponent
       }
     ]
   }

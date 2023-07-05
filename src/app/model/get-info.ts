@@ -1,8 +1,10 @@
+import { Seat } from "./seat"
+
 export class GetInfo {
     billId: number
     startDate: string
     startTime: string
-    seatNumber: Array<string>
+    seatNumber: Array<Seat>
     price: number
     destination: string
     departure: string
@@ -15,7 +17,7 @@ export class GetInfo {
         billId: number,
         startDate: string,
         startTime: string,
-        seatNumber: Array<string>,
+        seatNumber: Array<Seat>,
         price: number,
         destination: string,
         departure: string,

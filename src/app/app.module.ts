@@ -32,6 +32,8 @@ import { ScheduleManagementComponent } from './component/schedule-management/sch
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
 import { BillManagementComponent } from './component/bill-management/bill-management.component';
+import { TransactionComponent } from './component/transaction/transaction.component';
+import { PaypalComponent } from './component/paypal/paypal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { BillManagementComponent } from './component/bill-management/bill-manage
     ListScheduleComponent,
     ScheduleManagementComponent,
     PayScreenComponent,
-    BillManagementComponent
+    BillManagementComponent,
+    TransactionComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,

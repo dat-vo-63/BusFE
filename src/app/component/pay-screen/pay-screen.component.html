@@ -47,7 +47,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 70px;">No.</th>
-                                        <th>Ticket</th>
+                                        <th>Seat No.</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
@@ -58,15 +58,15 @@
                                         <th scope="row">{{i+1}}</th>
                                         <td>
                                             <div>
-                                                <p class="text-muted mb-0">{{b}}</p>
+                                                <p class="text-muted mb-0">{{b.seatNo}}</p>
                                             </div>
                                         </td>
-                                        <td>$ 245.50</td>
+                                        <td>$ {{b.seatPrice}}</td>
                                         <td>1</td>
-                                        <td class="text-end">$ 245.50</td>
+                                        <td class="text-end">$ {{b.seatPrice}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                        <th scope="row" colspan="4" class="border-0 text-end"></th>
                                         <td class="border-0 text-end">
                                             <h4 class="m-0 fw-semibold">$ {{bill.price}}</h4>
                                         </td>
@@ -76,12 +76,11 @@
                         </div><!-- end table responsive -->
                         <div class="d-print-none mt-4 pay-btn">
                             <div class="float-end">
-                                <a class="btn btn-primary w-md">Pay</a>
+                                <a class="btn btn-primary w-md" (click)="payBill()">Pay</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><!-- end col -->
     </div>
 </div>

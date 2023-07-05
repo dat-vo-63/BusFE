@@ -24,6 +24,11 @@
                     routerLink="/admin/schedule-management" *ngIf="role === 'Admin'">Schedule Management<span
                         class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLinkActive="link-active" href="/admin/transaction"
+                    routerLink="/admin/transaction" *ngIf="role === 'Admin'">Transaction<span
+                        class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <div class="mr-auto"></div>
         <ul class="navbar-nav my-2 my-lg-0">
