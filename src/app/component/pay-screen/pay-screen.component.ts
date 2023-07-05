@@ -17,6 +17,7 @@ export class PayScreenComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getBillById(Number(this.route.snapshot.paramMap.get('id'))).subscribe(res => {
       this.bill = res
+      console.log(this.bill)
     })
   }
 }

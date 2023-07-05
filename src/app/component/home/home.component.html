@@ -64,11 +64,12 @@
             <form [formGroup]="myForm" (submit)="addTicket()">
                 <div class="card" *ngFor="let seat of listSeat; let i = index">
                         <div class="input-group-text">
-                            <label for="{{seat.seatId}}">{{seat.seatId}}</label>
+                            <label for="{{seat.seatId}}">{{seat.seatNo}}</label>
                             <input type="checkbox" [disabled]="check(seatBookedList, seat.seatId)" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
                         </div>
                 </div>
                 <button type="submit" class="btn btn-success">Book Ticket</button>
+                <div class="alert alert-danger" role="danger"></div>
             </form>
         </div>
     </div>

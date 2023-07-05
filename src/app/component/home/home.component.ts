@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   billId?:number
   listSeat?: Array<Seat>
   listTotal?: Array<Array<Seat>> = []
+  msg?: string
 
   findScheduleForm: FormGroup = new FormGroup({
     startDate: new FormControl(""),
@@ -73,9 +74,10 @@ export class HomeComponent implements OnInit {
   addTicket() {
     this.adminService.addTicket(this.myForm.value.seats).subscribe(res =>{
       if(res !== "Seats May Be Have Been Booked"){
+        this.msg = res
         this.adminService.addBill(Number(res),localStorage.getItem("phoneNumber")).subscribe(res=>{
           this.billId = res.billId
-          this.router.navigate(['/find-bill',this.billId])
+          this.router.navigate(['admin/find-bill',this.billId])
         })
       }
       else{

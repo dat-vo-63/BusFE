@@ -25,7 +25,7 @@ export class AdminService {
   findScheduleByUrl = "find-schedule-start-time-depart-des"
   seatBookedUrl = "find-seat-booked-by-schedule"
   addBillUrl = "addBill"
-  findBillByIdUrl = "find-bill"
+  findBillByIdUrl = "get-detail-bill"
   getSeatSortedUrl = "list-seat-by-Schedule"
 
   constructor(private http: HttpClient) { }

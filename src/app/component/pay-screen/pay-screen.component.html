@@ -55,7 +55,7 @@
                                 </thead><!-- end thead -->
                                 <tbody>
                                     <tr *ngFor="let b of bill.seatNumber; let i = index">
-                                        <th scope="row">{{i}}</th>
+                                        <th scope="row">{{i+1}}</th>
                                         <td>
                                             <div>
                                                 <p class="text-muted mb-0">{{b}}</p>
@@ -68,10 +68,9 @@
                                     <tr>
                                         <th scope="row" colspan="4" class="border-0 text-end">Total</th>
                                         <td class="border-0 text-end">
-                                            <h4 class="m-0 fw-semibold">$739.00</h4>
+                                            <h4 class="m-0 fw-semibold">$ {{bill.price}}</h4>
                                         </td>
                                     </tr>
-                                    <!-- end tr -->
                                 </tbody><!-- end tbody -->
                             </table><!-- end table -->
                         </div><!-- end table responsive -->
