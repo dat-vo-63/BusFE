@@ -45,7 +45,7 @@
     </div>
     
 
-    <div class="book-ticket" *ngFor="let schedule of listSchedule; let i = index">
+    <div class="book-ticket" *ngFor="let schedule of listSchedule; let i = index" id="ticketCollapseParent">
         <div class="schedule-list">
             <div class="bus-infor">
                 <h3 class="bus-name">Start Time : {{schedule.startTime}}</h3>
@@ -55,14 +55,14 @@
                 <span class="busId">BusId: {{schedule.bus.busId}}</span>
                 <span class="bus-name">Bus Name: {{schedule.bus.name}}</span>
             </div>
-            <button type="button" class="btn btn-success" data-toggle="collapse" [attr.data-target]="'#ticketCollapse'+i" aria-expanded="false" aria-controls="collapseExample"
-                [attr.aria-expanded]="!isCollapsed" (click)="seatBooked(schedule.scheduleId)">
+            <button type="button" class="btn btn-success" data-toggle="collapse" [attr.data-target]="'#ticketCollapse'+i" aria-expanded="false" [attr.aria-controls]="'#ticketCollapse'+i"
+                [attr.aria-expanded]="!isCollapsed" (click)="listSeatSorted(schedule.scheduleId)">
                 Select
             </button>
         </div>
-        <div class="collapse" id="ticketCollapse{{i}}">
+        <div class="collapse" id="ticketCollapse{{i}}" [attr.data-parent]="'#ticketCollapseParent'">
             <form [formGroup]="myForm" (submit)="addTicket()">
-                <div class="card" *ngFor="let seat of schedule.seats; let i = index">
+                <div class="card" *ngFor="let seat of listSeat; let i = index">
                         <div class="input-group-text">
                             <label for="{{seat.seatId}}">{{seat.seatId}}</label>
                             <input type="checkbox" [disabled]="check(seatBookedList, seat.seatId)" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">

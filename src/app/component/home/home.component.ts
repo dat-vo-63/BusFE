@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   isClicked = false
   seatBookedList?: Array<number>
   billId?:number
+  listSeat?: Array<Seat>
+  listTotal?: Array<Array<Seat>> = []
 
   findScheduleForm: FormGroup = new FormGroup({
     startDate: new FormControl(""),
@@ -72,6 +74,7 @@ export class HomeComponent implements OnInit {
     this.adminService.addTicket(this.myForm.value.seats).subscribe(res=>{
       this.adminService.addBill(Number(res),localStorage.getItem("phoneNumber")).subscribe(res=>{
         this.billId = res.billId
+        console.log(res)
         this.router.navigate(['/find-bill',this.billId])
       })
     })
@@ -89,6 +92,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  getListSeatByScheduleId(scheduleId: number){
+    this.adminService.getSeatByScheduleId(scheduleId).subscribe
+  }
+
   seatBooked(scheduleId: number){
     this.adminService.seatBooked(scheduleId).subscribe(res=>{
       this.seatBookedList = res
@@ -99,5 +106,12 @@ export class HomeComponent implements OnInit {
     return arr?.includes(seat)
   }
 
-
+  listSeatSorted(scheduleId: number){
+    this.adminService.getSeatByScheduleId(scheduleId).subscribe(res=>{
+      this.listSeat = res
+    })
+    this.adminService.seatBooked(scheduleId).subscribe(res=>{
+      this.seatBookedList = res
+    })
+  }
 }

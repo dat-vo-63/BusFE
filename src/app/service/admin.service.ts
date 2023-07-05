@@ -26,6 +26,7 @@ export class AdminService {
   seatBookedUrl = "find-seat-booked-by-schedule"
   addBillUrl = "addBill"
   findBillByIdUrl = "find-bill"
+  getSeatSortedUrl = "list-seat-by-Schedule"
 
   constructor(private http: HttpClient) { }
 
@@ -108,5 +109,11 @@ export class AdminService {
 
   getBillById(billId: number): Observable<GetInfo> {
     return this.http.get<GetInfo>(`${this.baseUrl}/${this.findBillByIdUrl}/${billId}`)
+  }
+
+  getSeatByScheduleId(scheduleId: number): Observable<Array<Seat>>{
+    return this.http.put<Array<Seat>>(`${this.baseUrl}/${this.getSeatSortedUrl}`,{
+      "scheduleId": scheduleId
+    })
   }
 }
