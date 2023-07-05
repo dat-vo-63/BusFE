@@ -74,17 +74,22 @@ export class HomeComponent implements OnInit {
   addTicket() {
     this.adminService.addTicket(this.myForm.value.seats).subscribe(res =>{
       if(res !== "Seats May Be Have Been Booked"){
-        this.msg = res
+        
         this.adminService.addBill(Number(res),localStorage.getItem("phoneNumber")).subscribe(res=>{
           this.billId = res.billId
+          this.adminService.countDown(res.billId).subscribe(res=>{
+          
+          })
           this.router.navigate(['admin/find-bill',this.billId])
         })
       }
       else{
+        this.msg = res
         return res
       }
       return res
     })
+   
   }
 
   onChange($event: any) {

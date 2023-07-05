@@ -28,6 +28,7 @@ export class AdminService {
   findBillByIdUrl = "get-detail-bill"
   getSeatSortedUrl = "list-seat-by-Schedule"
   getAllBillUrl = "find-Bill"
+  countDownUrl = "count-down"
 
   constructor(private http: HttpClient) { }
 
@@ -121,5 +122,11 @@ export class AdminService {
   getAllBill(): Observable<Array<GetInfo>>{
     return this.http.get<Array<GetInfo>>(`${this.baseUrl}/${this.getAllBillUrl}`,{
     })
+  }
+
+  countDown(billId: number): Observable<string>{
+    return this.http.post(`${this.baseUrl}/${this.countDownUrl}`,{
+      "billId": billId
+    }, {responseType : 'text'})
   }
 }

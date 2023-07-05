@@ -12,6 +12,7 @@ import { ScheduleManagementComponent } from './component/schedule-management/sch
 import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
 import { TransactionComponent } from './component/transaction/transaction.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
+import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -58,6 +59,10 @@ const routes: Routes = [
       {
         path: 'paypal/:id',
         component: PaypalComponent
+      },
+      {
+        path: 'payment-successful/:id',
+        component: PaymentSuccessfulComponent
       }
     ]
   }

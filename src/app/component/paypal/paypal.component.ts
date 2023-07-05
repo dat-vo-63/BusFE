@@ -10,6 +10,7 @@ declare var paypal: any;
 })
 export class PaypalComponent implements OnInit {
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute
@@ -45,7 +46,7 @@ export class PaypalComponent implements OnInit {
         .then(orderData => {
           console.log("Capture result", orderData, JSON.stringify(orderData, null, 2));
           const transaction = orderData.purchase_units[0].payments.captures[0];
-          alert("Transaction " + transaction.status + ": " + transaction.id + "\n\nSee console for all available details");
+          this.router.navigate(['/admin/payment-successful', this.route.snapshot.paramMap.get('id')])
         });
       }
     }).render('#paypal-button-container');

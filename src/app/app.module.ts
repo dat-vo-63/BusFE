@@ -34,6 +34,7 @@ import { PayScreenComponent } from './component/pay-screen/pay-screen.component'
 import { BillManagementComponent } from './component/bill-management/bill-management.component';
 import { TransactionComponent } from './component/transaction/transaction.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
+import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { PaypalComponent } from './component/paypal/paypal.component';
     PayScreenComponent,
     BillManagementComponent,
     TransactionComponent,
-    PaypalComponent
+    PaypalComponent,
+    PaymentSuccessfulComponent
   ],
   imports: [
     BrowserModule,
