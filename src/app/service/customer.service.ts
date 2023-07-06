@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { User } from '../model/user';
+import { GetInfo } from '../model/get-info';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class CustomerService {
   editProfileUrl = ""
   findUserByEmailUrl = "find-By-Email"
   updatePofileUrl = "update-user"
+  findBillByEmailUrl = "find-bill-by-email"
 
   constructor(private http: HttpClient) { }
 
@@ -49,4 +51,11 @@ export class CustomerService {
       "address": address
     }, {responseType:'text'})
   }
+
+  getAllBillByEmail(email: string|null): Observable<Array<GetInfo>>{
+    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.findBillByEmailUrl}`,{
+      "email":email
+    })
+  }
+
 }

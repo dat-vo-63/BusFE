@@ -15,15 +15,24 @@ export class ScheduleManagementComponent implements OnInit {
   closeResult: string = ''
   model: NgbDateStruct
   listBus?: Array<Bus>
+  scheduleId?: number
+  
+  editScheduleForm: FormGroup = new FormGroup({
+    editStartTime: new FormControl(""),
+    editEndTime: new FormControl(""),
+    editDeparture: new FormControl(""),
+    editDestination: new FormControl(""),
+    editStartDate: new FormControl("")
+  })
 
   createSchedule: FormGroup = new FormGroup({
-    startTime: new FormControl(""),
-    endTime: new FormControl(""),
-    totalSeat: new FormControl(""),
-    seatLeft: new FormControl(""),
-    startDate: new FormControl(""),
-    destination: new FormControl(""),
-    departure: new FormControl(""),
+    startTime: new FormControl(),
+    endTime: new FormControl(),
+    totalSeat: new FormControl(),
+    seatLeft: new FormControl(),
+    startDate: new FormControl(),
+    destination: new FormControl(),
+    departure: new FormControl(),
     bus: new FormControl()
   })
 
@@ -74,7 +83,24 @@ export class ScheduleManagementComponent implements OnInit {
     })
   }
 
-  test() {
-    console.log()
+  openEdit(editForm: any, schedule: Schedule) {
+    this.modalService.open(editForm, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.scheduleId = schedule.scheduleId
+    this.editScheduleForm.patchValue({
+      editStartTime: schedule.startTime,
+      editEndTime: schedule.endTime,
+      editDeparture: schedule.departure,
+      editDestination: schedule.destinations,
+      editStartDate: schedule.startDate
+    })
+  }
+
+  editSubmit(){
+    this.adminService.editSchedule(this.scheduleId,`${this.editScheduleForm.value.editStartTime.getHours().toString()}:${this.editScheduleForm.value.editStartTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editEndTime.getHours().toString()}:${this.editScheduleForm.value.editEndTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editStartDate.year}/${this.editScheduleForm.value.editStartDate.month}/${this.editScheduleForm.value.editStartDate.day}`, this.editScheduleForm.value.editDeparture, this.editScheduleForm.value.editDestination).subscribe(res=>{
+      
+    })
   }
 }

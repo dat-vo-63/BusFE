@@ -13,6 +13,7 @@ import { PayScreenComponent } from './component/pay-screen/pay-screen.component'
 import { TransactionComponent } from './component/transaction/transaction.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
 import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
+import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'change-profile',
         component: ChangeProfileComponent
+      },
+      {
+        path: 'transaction-history',
+        component: TransactionHistoryComponent
       }
     ]
   },

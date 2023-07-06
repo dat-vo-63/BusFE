@@ -10,7 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class PaymentSuccessfulComponent implements OnInit{
 
-  bill: GetInfo = new GetInfo(0, "", "", [], 0, "", "", "Paid", "Truong Huu Tai", "0949093726", "")
+  bill?: GetInfo|null
   
   constructor(private adminService: AdminService, private route: ActivatedRoute, private router: Router) { }
   

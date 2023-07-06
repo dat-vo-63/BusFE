@@ -126,4 +126,6 @@ export class HomeComponent implements OnInit {
       this.seatBookedList = res
     })
   }
+
+  
 }

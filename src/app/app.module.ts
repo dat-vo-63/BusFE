@@ -35,6 +35,7 @@ import { BillManagementComponent } from './component/bill-management/bill-manage
 import { TransactionComponent } from './component/transaction/transaction.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
 import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
+import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { PaymentSuccessfulComponent } from './component/payment-successful/payme
     BillManagementComponent,
     TransactionComponent,
     PaypalComponent,
-    PaymentSuccessfulComponent
+    PaymentSuccessfulComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     BrowserModule,

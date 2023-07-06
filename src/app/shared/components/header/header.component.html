@@ -50,7 +50,7 @@
                     <a class="dropdown-item" routerLink="/admin/change-profile"
                         *ngIf="username !== null && role === 'Admin'">Change
                         profile</a>
-                    <a class="dropdown-item" *ngIf="username !==null">Transcation History</a>
+                    <a class="dropdown-item" *ngIf="username !==null && role === 'User'" routerLink="/customer/transaction-history">Transcation History</a>
                     <a class="dropdown-item" href="/login" *ngIf="username !==null" (click)="logout()">Logout</a>
 
                 </div>

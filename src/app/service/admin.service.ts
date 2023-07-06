@@ -29,6 +29,8 @@ export class AdminService {
   getSeatSortedUrl = "list-seat-by-Schedule"
   getAllBillUrl = "find-Bill"
   countDownUrl = "count-down"
+  getBillUrl = "get-bill"
+  updateScheduleUrl = "update-schedule"
 
   constructor(private http: HttpClient) { }
 
@@ -128,5 +130,22 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}/${this.countDownUrl}`,{
       "billId": billId
     }, {responseType : 'text'})
+  }
+
+  searchBill(billId: number): Observable<Array<GetInfo>>{
+    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.getBillUrl}`,{
+      "billId": billId
+    })
+  }
+
+  editSchedule(scheduleId: number|undefined, startTime: string, endTime: string, startDate: string, departure: string, destination: string): Observable<string>{
+    return this.http.post(`${this.baseUrl}/${this.updateScheduleUrl}`,{
+        "scheduleId": scheduleId,
+        "startTime":startTime,
+        "endTime":endTime,
+        "startDate":startDate,
+        "departure":departure,
+        "destinations":destination
+    }, {responseType:'text'})
   }
 }
