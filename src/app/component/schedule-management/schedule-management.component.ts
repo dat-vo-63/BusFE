@@ -16,6 +16,7 @@ export class ScheduleManagementComponent implements OnInit {
   model: NgbDateStruct
   listBus?: Array<Bus>
   scheduleId?: number
+  deleteSchedule?: number
   
   editScheduleForm: FormGroup = new FormGroup({
     editStartTime: new FormControl(""),
@@ -100,6 +101,20 @@ export class ScheduleManagementComponent implements OnInit {
 
   editSubmit(){
     this.adminService.editSchedule(this.scheduleId,`${this.editScheduleForm.value.editStartTime.getHours().toString()}:${this.editScheduleForm.value.editStartTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editEndTime.getHours().toString()}:${this.editScheduleForm.value.editEndTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editStartDate.year}/${this.editScheduleForm.value.editStartDate.month}/${this.editScheduleForm.value.editStartDate.day}`, this.editScheduleForm.value.editDeparture, this.editScheduleForm.value.editDestination).subscribe(res=>{
+      
+    })
+  }
+
+  openDelete(deleteConfirm: any, schedule: Schedule) {
+    this.deleteSchedule = schedule.scheduleId
+    this.modalService.open(deleteConfirm, {
+      backdrop: 'static',
+      size: 'lg'
+    })
+  }
+
+  onDelete(){
+    this.adminService.deleteSchedule(this.deleteSchedule).subscribe(res=>{
       
     })
   }

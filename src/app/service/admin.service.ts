@@ -31,7 +31,7 @@ export class AdminService {
   countDownUrl = "count-down"
   getBillUrl = "get-bill"
   updateScheduleUrl = "update-schedule"
-
+  deleteScheduleUrl = ""
   constructor(private http: HttpClient) { }
 
   addschedule(startTime: string, endTime: string, startDate: string, departure: string, destination: string, busId: number): Observable<Schedule> {
@@ -147,5 +147,9 @@ export class AdminService {
         "departure":departure,
         "destinations":destination
     }, {responseType:'text'})
+  }
+
+  deleteSchedule(scheduleId: number|undefined): Observable<string>{
+    return this.http.delete<string>(`${this.baseUrl}`)
   }
 }

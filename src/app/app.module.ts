@@ -36,6 +36,7 @@ import { TransactionComponent } from './component/transaction/transaction.compon
 import { PaypalComponent } from './component/paypal/paypal.component';
 import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
 import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { TransactionHistoryComponent } from './component/transaction-history/tra
     TransactionComponent,
     PaypalComponent,
     PaymentSuccessfulComponent,
-    TransactionHistoryComponent
+    TransactionHistoryComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
