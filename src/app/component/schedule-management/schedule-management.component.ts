@@ -17,6 +17,7 @@ export class ScheduleManagementComponent implements OnInit {
   listBus?: Array<Bus>
   scheduleId?: number
   deleteSchedule?: number
+  msg: string = ""
   
   editScheduleForm: FormGroup = new FormGroup({
     editStartTime: new FormControl(""),
@@ -115,7 +116,15 @@ export class ScheduleManagementComponent implements OnInit {
 
   onDelete(){
     this.adminService.deleteSchedule(this.deleteSchedule).subscribe(res=>{
-      
+      this.msg = res
+      console.log(this.msg)
+      if(res === "Can't Deleted" || res === "Can't found Schedule"){
+        
+      }
+      else{
+        this.modalService.dismissAll()
+        this.ngOnInit()
+      }
     })
   }
 }

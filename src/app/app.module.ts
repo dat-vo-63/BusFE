@@ -37,6 +37,8 @@ import { PaypalComponent } from './component/paypal/paypal.component';
 import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
 import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import {MatDividerModule} from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +81,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     TimepickerModule,
     MatSelectModule,
     NgbDatepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@ export class TransactionComponent implements OnInit{
   listBill?: Array<GetInfo>
   searchBillForm: FormGroup = new FormGroup({
     billId: new FormControl(),
-
+    startDate: new FormControl()
   })
   ngOnInit(): void {
     this.adminService.getAllBill().subscribe(res=>{
@@ -31,6 +31,8 @@ export class TransactionComponent implements OnInit{
   }
 
   searchBillByDate(){
-    
+    this.adminService.searchBillByStartDate(`${this.searchBillForm.value.startDate.year}/${this.searchBillForm.value.startDate.month}/${this.searchBillForm.value.startDate.day}`).subscribe(res=>{
+      this.listBill = res
+    })
   }
 }

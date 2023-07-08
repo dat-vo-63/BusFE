@@ -31,7 +31,8 @@ export class AdminService {
   countDownUrl = "count-down"
   getBillUrl = "get-bill"
   updateScheduleUrl = "update-schedule"
-  deleteScheduleUrl = ""
+  deleteScheduleUrl = "delete-schedule"
+  searchBillByStartDateUrl = "find-all-bill-by-start-date"
   constructor(private http: HttpClient) { }
 
   addschedule(startTime: string, endTime: string, startDate: string, departure: string, destination: string, busId: number): Observable<Schedule> {
@@ -150,6 +151,14 @@ export class AdminService {
   }
 
   deleteSchedule(scheduleId: number|undefined): Observable<string>{
-    return this.http.delete<string>(`${this.baseUrl}`)
+    return this.http.post<string>(`${this.baseUrl}/${this.deleteScheduleUrl}`,{
+      "scheduleId": scheduleId
+    })
+  }
+
+  searchBillByStartDate(startDate: string): Observable<Array<GetInfo>>{
+    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.searchBillByStartDateUrl}`,{
+      "startDate": startDate
+    })
   }
 }

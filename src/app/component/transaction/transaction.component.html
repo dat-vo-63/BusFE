@@ -7,7 +7,7 @@
             <div class="form-group">
                 <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp"
                     formControlName="startDate" ngbDatepicker #d="ngbDatepicker"
-                    (dateSelect)="searchBillByDate()"/>
+                    (dateSelect)="searchBillByDate()" (input)="searchBillByDate()"/>
                 <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                     type="button"></button>
             </div>
