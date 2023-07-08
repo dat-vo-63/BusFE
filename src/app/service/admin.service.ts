@@ -33,6 +33,9 @@ export class AdminService {
   updateScheduleUrl = "update-schedule"
   deleteScheduleUrl = "delete-schedule"
   searchBillByStartDateUrl = "find-all-bill-by-start-date"
+  paginationAllBill = "find-Bill-paging"
+
+
   constructor(private http: HttpClient) { }
 
   addschedule(startTime: string, endTime: string, startDate: string, departure: string, destination: string, busId: number): Observable<Schedule> {
@@ -116,49 +119,55 @@ export class AdminService {
     return this.http.get<GetInfo>(`${this.baseUrl}/${this.findBillByIdUrl}/${billId}`)
   }
 
-  getSeatByScheduleId(scheduleId: number): Observable<Array<Seat>>{
-    return this.http.put<Array<Seat>>(`${this.baseUrl}/${this.getSeatSortedUrl}`,{
+  getSeatByScheduleId(scheduleId: number): Observable<Array<Seat>> {
+    return this.http.put<Array<Seat>>(`${this.baseUrl}/${this.getSeatSortedUrl}`, {
       "scheduleId": scheduleId
     })
   }
 
-  getAllBill(): Observable<Array<GetInfo>>{
-    return this.http.get<Array<GetInfo>>(`${this.baseUrl}/${this.getAllBillUrl}`,{
+  getAllBill(): Observable<Array<GetInfo>> {
+    return this.http.get<Array<GetInfo>>(`${this.baseUrl}/${this.getAllBillUrl}`, {
     })
   }
 
-  countDown(billId: number): Observable<string>{
-    return this.http.post(`${this.baseUrl}/${this.countDownUrl}`,{
+  countDown(billId: number): Observable<string> {
+    return this.http.post(`${this.baseUrl}/${this.countDownUrl}`, {
       "billId": billId
-    }, {responseType : 'text'})
+    }, { responseType: 'text' })
   }
 
-  searchBill(billId: number): Observable<Array<GetInfo>>{
-    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.getBillUrl}`,{
+  searchBill(billId: number): Observable<Array<GetInfo>> {
+    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.getBillUrl}`, {
       "billId": billId
     })
   }
 
-  editSchedule(scheduleId: number|undefined, startTime: string, endTime: string, startDate: string, departure: string, destination: string): Observable<string>{
-    return this.http.post(`${this.baseUrl}/${this.updateScheduleUrl}`,{
-        "scheduleId": scheduleId,
-        "startTime":startTime,
-        "endTime":endTime,
-        "startDate":startDate,
-        "departure":departure,
-        "destinations":destination
-    }, {responseType:'text'})
+  editSchedule(scheduleId: number | undefined, startTime: string, endTime: string, startDate: string, departure: string, destination: string): Observable<string> {
+    return this.http.post(`${this.baseUrl}/${this.updateScheduleUrl}`, {
+      "scheduleId": scheduleId,
+      "startTime": startTime,
+      "endTime": endTime,
+      "startDate": startDate,
+      "departure": departure,
+      "destinations": destination
+    }, { responseType: 'text' })
   }
 
-  deleteSchedule(scheduleId: number|undefined): Observable<string>{
-    return this.http.post<string>(`${this.baseUrl}/${this.deleteScheduleUrl}`,{
+  deleteSchedule(scheduleId: number | undefined): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/${this.deleteScheduleUrl}`, {
       "scheduleId": scheduleId
     })
   }
 
-  searchBillByStartDate(startDate: string): Observable<Array<GetInfo>>{
-    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.searchBillByStartDateUrl}`,{
+  searchBillByStartDate(startDate: string): Observable<Array<GetInfo>> {
+    return this.http.put<Array<GetInfo>>(`${this.baseUrl}/${this.searchBillByStartDateUrl}`, {
       "startDate": startDate
+    })
+  }
+
+  getAllBillPagination(offset: string): Observable<{}> {
+    return this.http.put(`${this.baseUrl}/${this.paginationAllBill}`, {
+      "offset": offset
     })
   }
 }

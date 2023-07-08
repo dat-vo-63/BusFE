@@ -28,8 +28,10 @@
                 <td>{{s.seatLeft}}</td>
                 <td>{{s.startDate}}</td>
                 <td>
-                    <button type="button" (click)="openEdit(editForm, s)" class="btn btn-warning" [disabled]="s.seatLeft !== s.totalSeat" ngClass=""><i class="fa fa-edit"></i>Edit</button>
-                    <button type="button" class="btn btn-danger" (click)="openDelete(deleteConfirm, s)"><i class="fa fa-remove"></i>Delete</button>
+                    <button type="button" (click)="openEdit(editForm, s)" class="btn btn-warning"
+                        [disabled]="s.seatLeft !== s.totalSeat" ngClass=""><i class="fa fa-edit"></i>Edit</button>
+                    <button type="button" class="btn btn-danger" (click)="openDelete(deleteConfirm, s)"><i
+                            class="fa fa-remove"></i>Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -48,18 +50,18 @@
             <div class="form-group">
                 <label for="startTime">Start Date</label>
                 <div class="input-group">
-                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="startDate"
-                        ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model"/>
+                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                        formControlName="startDate" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model" />
                     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                         type="button"></button>
                 </div>
             </div>
             <div class="form-group">
-                
+
                 <div class="time_picker">
                     <div class="picker_group">
                         <label class="date-label" for="startTime">Start Time</label>
-                        <timepicker id="startTime"  formControlName="startTime" [showMeridian]="false" [minuteStep]="1">
+                        <timepicker id="startTime" formControlName="startTime" [showMeridian]="false" [minuteStep]="1">
                         </timepicker>
                     </div>
                     <div class="picker_group">
@@ -78,7 +80,8 @@
             <div class="form-group">
                 <label for="destination">Destination</label>
                 <div class="input-group">
-                    <input type="text" id="destination" class="form-control" name="destination" formControlName="destination">
+                    <input type="text" id="destination" class="form-control" name="destination"
+                        formControlName="destination">
                 </div>
             </div>
             <div class="form-group">
@@ -110,23 +113,25 @@
             <div class="form-group">
                 <label for="startTime">Start Date</label>
                 <div class="input-group">
-                    <input id="editStartDate" class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="editStartDate"
-                        ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model"/>
+                    <input id="editStartDate" class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                        formControlName="editStartDate" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model" />
                     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                         type="button"></button>
                 </div>
             </div>
             <div class="form-group">
-                
+
                 <div class="time_picker">
                     <div class="picker_group">
                         <label class="date-label" for="startTime">Start Time</label>
-                        <timepicker id="editStartTime"  formControlName="editStartTime" [showMeridian]="false" [minuteStep]="1">
+                        <timepicker id="editStartTime" formControlName="editStartTime" [showMeridian]="false"
+                            [minuteStep]="1">
                         </timepicker>
                     </div>
                     <div class="picker_group">
                         <label class="date-label" for="endTime">End Time</label>
-                        <timepicker id="editEndTime" formControlName="editEndTime" [showMeridian]="false" [minuteStep]="1">
+                        <timepicker id="editEndTime" formControlName="editEndTime" [showMeridian]="false"
+                            [minuteStep]="1">
                         </timepicker>
                     </div>
                 </div>
@@ -134,13 +139,15 @@
             <div class="form-group">
                 <label for="departure">Departure</label>
                 <div class="input-group">
-                    <input type="text" id="editDeparture" class="form-control" name="editDeparture" formControlName="editDeparture">
+                    <input type="text" id="editDeparture" class="form-control" name="editDeparture"
+                        formControlName="editDeparture">
                 </div>
             </div>
             <div class="form-group">
                 <label for="destination">Destination</label>
                 <div class="input-group">
-                    <input type="text" id="editDestination" class="form-control" name="editDestination" formControlName="editDestination">
+                    <input type="text" id="editDestination" class="form-control" name="editDestination"
+                        formControlName="editDestination">
                 </div>
             </div>
         </div>

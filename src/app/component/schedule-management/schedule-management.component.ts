@@ -18,7 +18,7 @@ export class ScheduleManagementComponent implements OnInit {
   scheduleId?: number
   deleteSchedule?: number
   msg: string = ""
-  
+
   editScheduleForm: FormGroup = new FormGroup({
     editStartTime: new FormControl(""),
     editEndTime: new FormControl(""),
@@ -100,9 +100,9 @@ export class ScheduleManagementComponent implements OnInit {
     })
   }
 
-  editSubmit(){
-    this.adminService.editSchedule(this.scheduleId,`${this.editScheduleForm.value.editStartTime.getHours().toString()}:${this.editScheduleForm.value.editStartTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editEndTime.getHours().toString()}:${this.editScheduleForm.value.editEndTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editStartDate.year}/${this.editScheduleForm.value.editStartDate.month}/${this.editScheduleForm.value.editStartDate.day}`, this.editScheduleForm.value.editDeparture, this.editScheduleForm.value.editDestination).subscribe(res=>{
-      
+  editSubmit() {
+    this.adminService.editSchedule(this.scheduleId, `${this.editScheduleForm.value.editStartTime.getHours().toString()}:${this.editScheduleForm.value.editStartTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editEndTime.getHours().toString()}:${this.editScheduleForm.value.editEndTime.getMinutes().toString()}`, `${this.editScheduleForm.value.editStartDate.year}/${this.editScheduleForm.value.editStartDate.month}/${this.editScheduleForm.value.editStartDate.day}`, this.editScheduleForm.value.editDeparture, this.editScheduleForm.value.editDestination).subscribe(res => {
+
     })
   }
 
@@ -114,14 +114,14 @@ export class ScheduleManagementComponent implements OnInit {
     })
   }
 
-  onDelete(){
-    this.adminService.deleteSchedule(this.deleteSchedule).subscribe(res=>{
+  onDelete() {
+    this.adminService.deleteSchedule(this.deleteSchedule).subscribe(res => {
       this.msg = res
       console.log(this.msg)
-      if(res === "Can't Deleted" || res === "Can't found Schedule"){
-        
+      if (res === "Can't Deleted" || res === "Can't found Schedule") {
+
       }
-      else{
+      else {
         this.modalService.dismissAll()
         this.ngOnInit()
       }

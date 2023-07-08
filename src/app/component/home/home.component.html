@@ -6,7 +6,7 @@
                 <div class="input-group">
                     <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp"
                         formControlName="startDate" ngbDatepicker #d="ngbDatepicker"
-                        (dateSelect)="getDesAndDepByStartDate()" (input)="getDesAndDepByStartDate()"/>
+                        (dateSelect)="getDesAndDepByStartDate()" (input)="getDesAndDepByStartDate()" />
                     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"
                         type="button"></button>
                 </div>
@@ -22,7 +22,8 @@
             <div class="form-group">
                 <label for="destination">Destination</label>
                 <div class="input-group">
-                    <select id="destination" class="form-control" formControlName="destination" formControlName="destination">
+                    <select id="destination" class="form-control" formControlName="destination"
+                        formControlName="destination">
                         <option *ngFor="let des of destination" [value]="des">{{des}}</option>
                     </select>
                 </div>
@@ -43,7 +44,7 @@
             <span>Schedule not found</span>
         </div>
     </div>
-    
+
 
     <div class="book-ticket" *ngFor="let schedule of listSchedule; let i = index" id="ticketCollapseParent">
         <div class="schedule-list">
@@ -55,24 +56,30 @@
                 <span class="busId">BusId: {{schedule.bus.busId}}</span>
                 <span class="bus-name">Bus Name: {{schedule.bus.name}}</span>
             </div>
-            <button type="button" class="btn btn-success" data-toggle="collapse" [attr.data-target]="'#ticketCollapse'+i" aria-expanded="false" [attr.aria-controls]="'#ticketCollapse'+i"
-                [attr.aria-expanded]="!isCollapsed" (click)="listSeatSorted(schedule.scheduleId)">
+            <button type="button" class="btn btn-success" data-toggle="collapse"
+                [attr.data-target]="'#ticketCollapse'+i" aria-expanded="false"
+                [attr.aria-controls]="'#ticketCollapse'+i" [attr.aria-expanded]="!isCollapsed"
+                (click)="listSeatSorted(schedule.scheduleId)">
                 Select
             </button>
         </div>
         <div class="collapse" id="ticketCollapse{{i}}" [attr.data-parent]="'#ticketCollapseParent'">
             <form [formGroup]="myForm" (submit)="addTicket()">
-                <div class="card" *ngFor="let seat of listSeat; let i = index">
+                <div class="ticket-booking">
+                    <div class="card" *ngFor="let seat of listSeat; let i = index">
                         <div class="input-group-text">
                             <label for="{{seat.seatId}}">{{seat.seatNo}}</label>
-                            <input type="checkbox" [disabled]="check(seatBookedList, seat.seatId)" [value]="seat.seatId" id="{{seat.seatId}}" (change)="onChange($event)">
+                            <input type="checkbox" [disabled]="check(seatBookedList, seat.seatId)" [value]="seat.seatId"
+                                id="{{seat.seatId}}" (change)="onChange($event)">
                         </div>
+                    </div>
                 </div>
+
                 <button type="submit" class="btn btn-success">Book Ticket</button>
-                <div class="alert alert-danger" role="danger"></div>
+                <div class="alert alert-danger" role="danger" *ngIf="msg === 'Seats May Be Have Been Booked'">
+                    <span>{{msg}}</span>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
-<!-- <input type="checkbox" [disabled]="seatBookedList" class="disabled-checkbox"> -->

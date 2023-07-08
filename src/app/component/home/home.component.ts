@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
   public isCollapsed = false
   isClicked = false
   seatBookedList?: Array<number>
-  billId?:number
+  billId?: number
   listSeat?: Array<Seat>
   listTotal?: Array<Array<Seat>> = []
-  msg?: string
+  msg: string = ""
 
   findScheduleForm: FormGroup = new FormGroup({
     startDate: new FormControl(""),
@@ -47,14 +47,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getDepartureByStartDate(startDate: string){
-    this.adminService.getAllDeparture(startDate).subscribe(res=>{
+  getDepartureByStartDate(startDate: string) {
+    this.adminService.getAllDeparture(startDate).subscribe(res => {
       this.departure = res
     })
   }
 
-  getDestinationByStartDate(startDate: string){
-    this.adminService.getAllDestination(startDate).subscribe(res=>{
+  getDestinationByStartDate(startDate: string) {
+    this.adminService.getAllDestination(startDate).subscribe(res => {
       this.destination = res
     })
   }
@@ -64,32 +64,30 @@ export class HomeComponent implements OnInit {
     this.getDestinationByStartDate(`${this.findScheduleForm.value.startDate.year}/${this.findScheduleForm.value.startDate.month}/${this.findScheduleForm.value.startDate.day}`)
   }
 
-  getAllSchedule(){
-    this.adminService.findScheduleBy(`${this.findScheduleForm.value.startDate.year}/${this.findScheduleForm.value.startDate.month}/${this.findScheduleForm.value.startDate.day}`, this.findScheduleForm.value.departure, this.findScheduleForm.value.destination).subscribe(res=>{
+  getAllSchedule() {
+    this.adminService.findScheduleBy(`${this.findScheduleForm.value.startDate.year}/${this.findScheduleForm.value.startDate.month}/${this.findScheduleForm.value.startDate.day}`, this.findScheduleForm.value.departure, this.findScheduleForm.value.destination).subscribe(res => {
       this.listSchedule = res
       this.isClicked = true
     })
   }
 
   addTicket() {
-    this.adminService.addTicket(this.myForm.value.seats).subscribe(res =>{
-      if(res !== "Seats May Be Have Been Booked"){
-        
-        this.adminService.addBill(Number(res),localStorage.getItem("phoneNumber")).subscribe(res=>{
+    this.adminService.addTicket(this.myForm.value.seats).subscribe(res => {
+      if (res !== "Seats May Be Have Been Booked") {
+
+        this.adminService.addBill(Number(res), localStorage.getItem("phoneNumber")).subscribe(res => {
           this.billId = res.billId
-          this.adminService.countDown(res.billId).subscribe(res=>{
-          
+          this.adminService.countDown(res.billId).subscribe(res => {
+
           })
-          this.router.navigate(['admin/find-bill',this.billId])
+          this.router.navigate(['admin/find-bill', this.billId])
         })
       }
-      else{
+      else {
         this.msg = res
-        return res
       }
-      return res
     })
-   
+
   }
 
   onChange($event: any) {
@@ -104,28 +102,28 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getListSeatByScheduleId(scheduleId: number){
+  getListSeatByScheduleId(scheduleId: number) {
     this.adminService.getSeatByScheduleId(scheduleId).subscribe
   }
 
-  seatBooked(scheduleId: number){
-    this.adminService.seatBooked(scheduleId).subscribe(res=>{
+  seatBooked(scheduleId: number) {
+    this.adminService.seatBooked(scheduleId).subscribe(res => {
       this.seatBookedList = res
     })
   }
 
-  check(arr: Array<number>|undefined, seat: number){
+  check(arr: Array<number> | undefined, seat: number) {
     return arr?.includes(seat)
   }
 
-  listSeatSorted(scheduleId: number){
-    this.adminService.getSeatByScheduleId(scheduleId).subscribe(res=>{
+  listSeatSorted(scheduleId: number) {
+    this.adminService.getSeatByScheduleId(scheduleId).subscribe(res => {
       this.listSeat = res
     })
-    this.adminService.seatBooked(scheduleId).subscribe(res=>{
+    this.adminService.seatBooked(scheduleId).subscribe(res => {
       this.seatBookedList = res
     })
   }
 
-  
+
 }
