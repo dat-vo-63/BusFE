@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let s of schedule">
+            <tr *ngFor="let s of schedule | slice: (page-1)*pageSize : (page - 1) * pageSize + pageSize">
                 <th scope="row">{{s.scheduleId}}</th>
                 <td>{{s.startTime}}</td>
                 <td>{{s.endTime}}</td>
@@ -36,6 +36,8 @@
             </tr>
         </tbody>
     </table>
+    <ngb-pagination [pageSize]="pageSize" [collectionSize]="collectionSize" [(page)]="page"
+        aria-label="Default pagination"></ngb-pagination>
 </div>
 
 <ng-template #newSchedule let-modal>

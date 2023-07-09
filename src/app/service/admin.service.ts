@@ -34,6 +34,7 @@ export class AdminService {
   deleteScheduleUrl = "delete-schedule"
   searchBillByStartDateUrl = "find-all-bill-by-start-date"
   paginationAllBill = "find-Bill-paging"
+  updateBusUrl = "updateBus"
 
 
   constructor(private http: HttpClient) { }
@@ -165,9 +166,16 @@ export class AdminService {
     })
   }
 
-  getAllBillPagination(offset: string): Observable<{}> {
-    return this.http.put(`${this.baseUrl}/${this.paginationAllBill}`, {
-      "offset": offset
+  // getAllBillPagination(offset: string): Observable<{}> {
+  //   return this.http.put(`${this.baseUrl}/${this.paginationAllBill}`, {
+  //     "offset": offset
+  //   })
+  // }
+
+  editBus(name: string, seat: number) {
+    return this.http.post(``, {
+      "name": name,
+      "seat": seat
     })
   }
 }

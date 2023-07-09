@@ -11,6 +11,10 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class BusListComponent implements OnInit {
 
+  page = 1
+  pageSize: number = 5
+  collectionSize = 1
+
   listBus?: Array<Bus>
   closeResult: string = ''
   addNewBusForm: FormGroup = new FormGroup({
@@ -23,8 +27,6 @@ export class BusListComponent implements OnInit {
   editBusForm: FormGroup = new FormGroup({
     name: new FormControl(""),
     seats: new FormControl(),
-    departure: new FormControl(""),
-    destination: new FormControl("")
   })
 
   constructor(private adminService: AdminService, private modalService: NgbModal) { }
@@ -36,6 +38,7 @@ export class BusListComponent implements OnInit {
   getAllBus() {
     this.adminService.getAllBus().subscribe(res => {
       this.listBus = res
+      this.collectionSize = this.listBus.length / this.pageSize
     })
   }
 
@@ -66,7 +69,9 @@ export class BusListComponent implements OnInit {
   }
 
   editBusInfo() {
-    // this.adminService.editBus()
+    this.adminService.editBus(this.editBusForm.value.name, this.editBusForm.value.seat).subscribe(res => {
+
+    })
     this.modalService.dismissAll()
   }
 

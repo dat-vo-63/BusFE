@@ -10,6 +10,8 @@ import { CustomerService } from 'src/app/service/customer.service';
 })
 export class RegisterComponent implements OnInit {
 
+  msg = "*"
+
   registerForm: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required]),
@@ -25,7 +27,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("username")!==null){
+    if (localStorage.getItem("username") !== null) {
       this.router.navigateByUrl("/customer/home")
     }
   }
@@ -40,7 +42,10 @@ export class RegisterComponent implements OnInit {
 
   addNewCustomer(): any {
     this.customerService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.phoneNumber, this.registerForm.value.email, this.registerForm.value.address).subscribe(res => {
-      return res
+      this.msg = this.msg + res
+      if (this.msg.includes("Register Successful")) {
+        this.router.navigateByUrl("/login")
+      }
     })
   }
 }

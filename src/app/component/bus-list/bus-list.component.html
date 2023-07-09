@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let bus of listBus">
+            <tr *ngFor="let bus of listBus | slice: (page-1)*pageSize : (page - 1) * pageSize + pageSize">
                 <th scope="row">{{bus.busId}}</th>
                 <td>{{bus.name}}</td>
                 <td>{{bus.seat}}</td>
@@ -24,6 +24,8 @@
             </tr>
         </tbody>
     </table>
+    <ngb-pagination [pageSize]="pageSize" [collectionSize]="collectionSize" [(page)]="page"
+        aria-label="Default pagination"></ngb-pagination>
 </div>
 
 <ng-template #newBus let-modal>
@@ -75,18 +77,6 @@
                 <label for="seats">Seats</label>
                 <div class="input-group">
                     <input type="text" id="seats" class="form-control" name="seats" formControlName="seats">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="departure">Departure</label>
-                <div class="input-group">
-                    <input id="departure" class="form-control" name="departure" formControlName="departure">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="destination">Destination</label>
-                <div class="input-group">
-                    <input id="destination" class="form-control" name="destination" formControlName="destination">
                 </div>
             </div>
         </div>

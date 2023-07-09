@@ -14,6 +14,7 @@ import { TransactionComponent } from './component/transaction/transaction.compon
 import { PaypalComponent } from './component/paypal/paypal.component';
 import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
 import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
+import { BillDetailComponent } from './component/bill-detail/bill-detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -68,6 +69,10 @@ const routes: Routes = [
       {
         path: 'payment-successful/:id',
         component: PaymentSuccessfulComponent
+      },
+      {
+        path: 'bill-detail/:id',
+        component: BillDetailComponent
       }
     ]
   }

@@ -11,6 +11,9 @@ import { AdminService } from 'src/app/service/admin.service';
   styleUrls: ['./schedule-management.component.css']
 })
 export class ScheduleManagementComponent implements OnInit {
+  page = 1
+  pageSize: number = 5
+  collectionSize = 1
   schedule?: Array<Schedule>
   closeResult: string = ''
   model: NgbDateStruct
@@ -50,6 +53,7 @@ export class ScheduleManagementComponent implements OnInit {
   getAllSchedule() {
     this.adminService.getAllSchedule().subscribe(res => {
       this.schedule = res
+      this.collectionSize = this.schedule.length / this.pageSize
     })
   }
 

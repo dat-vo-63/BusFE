@@ -38,6 +38,7 @@ import { PaymentSuccessfulComponent } from './component/payment-successful/payme
 import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { BillDetailComponent } from './component/bill-detail/bill-detail.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {MatDividerModule} from '@angular/material/divider';
     PaypalComponent,
     PaymentSuccessfulComponent,
     TransactionHistoryComponent,
-    FooterComponent
+    FooterComponent,
+    BillDetailComponent
   ],
   imports: [
     BrowserModule,
