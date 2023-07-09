@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Bus } from 'src/app/model/bus';
 import { AdminService } from 'src/app/service/admin.service';
@@ -15,6 +15,7 @@ export class BusListComponent implements OnInit {
   pageSize: number = 5
   collectionSize = 1
 
+  busId: number = 0
   listBus?: Array<Bus>
   closeResult: string = ''
   addNewBusForm: FormGroup = new FormGroup({
@@ -68,15 +69,42 @@ export class BusListComponent implements OnInit {
     this.modalService.dismissAll()
   }
 
-  editBusInfo() {
-    this.adminService.editBus(this.editBusForm.value.name, this.editBusForm.value.seat).subscribe(res => {
-
+  openEdit(form: any, bus: Bus) {
+    this.modalService.open(form, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.busId = bus.busId
+    this.editBusForm.patchValue({
+      name: bus.name,
+      seats: bus.seat
     })
-    this.modalService.dismissAll()
+  }
+
+  editBusInfo() {
+    this.adminService.editBus(this.busId, this.editBusForm.value.name, this.editBusForm.value.seats).subscribe(res => {
+      if (res.includes("Update Success")) {
+        this.modalService.dismissAll()
+        this.ngOnInit()
+      }
+    })
+  }
+
+  openDelete(form: any, bus: Bus) {
+    this.modalService.open(form, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.busId = bus.busId
   }
 
   onDelete() {
-
+    this.adminService.deleteBus(this.busId).subscribe(res => {
+      if (res.includes("Deleted Success")) {
+        this.modalService.dismissAll()
+        this.ngOnInit()
+      }
+    })
   }
 
 }

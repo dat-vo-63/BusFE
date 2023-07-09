@@ -35,7 +35,7 @@ export class AdminService {
   searchBillByStartDateUrl = "find-all-bill-by-start-date"
   paginationAllBill = "find-Bill-paging"
   updateBusUrl = "updateBus"
-
+  deleteBusUrl = "delete-bus"
 
   constructor(private http: HttpClient) { }
 
@@ -172,10 +172,17 @@ export class AdminService {
   //   })
   // }
 
-  editBus(name: string, seat: number) {
-    return this.http.post(``, {
+  editBus(bustId: number, name: string, seat: number): Observable<string> {
+    return this.http.put(`${this.baseUrl}/${this.updateBusUrl}`, {
+      "busId": bustId,
       "name": name,
       "seat": seat
-    })
+    }, { responseType: 'text' })
+  }
+
+  deleteBus(bustId: number): Observable<string> {
+    return this.http.post(`${this.baseUrl}/${this.deleteBusUrl}`, {
+      "busId": bustId
+    }, { responseType: 'text' })
   }
 }

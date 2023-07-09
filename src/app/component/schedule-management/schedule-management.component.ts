@@ -53,7 +53,7 @@ export class ScheduleManagementComponent implements OnInit {
   getAllSchedule() {
     this.adminService.getAllSchedule().subscribe(res => {
       this.schedule = res
-      this.collectionSize = this.schedule.length / this.pageSize
+      this.collectionSize = this.schedule.length
     })
   }
 

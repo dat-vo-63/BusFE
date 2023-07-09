@@ -18,8 +18,10 @@
                 <td>{{bus.name}}</td>
                 <td>{{bus.seat}}</td>
                 <td>
-                    <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i>Edit</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i>Delete</button>
+                    <button type="button" class="btn btn-warning" (click)="openEdit(editBus, bus)"><i
+                            class="fa fa-edit"></i>Edit</button>
+                    <button type="button" class="btn btn-danger" (click)="openDelete(deleteConfirm, bus)"><i
+                            class="fa fa-remove"></i>Delete</button>
                 </td>
             </tr>
         </tbody>

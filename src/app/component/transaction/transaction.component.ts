@@ -22,7 +22,7 @@ export class TransactionComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getAllBill().subscribe(res => {
       this.listBill = res
-      this.collectionSize = this.listBill.length / this.pageSize
+      this.collectionSize = this.listBill.length
     })
 
   }
