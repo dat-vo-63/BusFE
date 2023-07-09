@@ -11,7 +11,7 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class PayScreenComponent implements OnInit {
 
-  bill: GetInfo = new GetInfo(0, "", "", [], 0, "", "", "Paid", "Truong Huu Tai", "0949093726", "")
+  bill: GetInfo = new GetInfo(0, "", "", [], 0, "", "", "Paid", "Unknown", "#######", "")
   constructor(private adminService: AdminService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class PayScreenComponent implements OnInit {
     })
   }
 
-  payBill(){
+  payBill() {
     this.router.navigate(['admin/paypal', this.bill.billId])
   }
 }

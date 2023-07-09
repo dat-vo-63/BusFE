@@ -29,15 +29,14 @@ import { EditBusInfoComponent } from './component/edit-bus-info/edit-bus-info.co
 import { BusManagementComponent } from './component/bus-management/bus-management.component';
 import { ListScheduleComponent } from './component/list-schedule/list-schedule.component';
 import { ScheduleManagementComponent } from './component/schedule-management/schedule-management.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PayScreenComponent } from './component/pay-screen/pay-screen.component';
-import { BillManagementComponent } from './component/bill-management/bill-management.component';
 import { TransactionComponent } from './component/transaction/transaction.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
 import { PaymentSuccessfulComponent } from './component/payment-successful/payment-successful.component';
 import { TransactionHistoryComponent } from './component/transaction-history/transaction-history.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { BillDetailComponent } from './component/bill-detail/bill-detail.component';
 
 @NgModule({
@@ -58,13 +57,12 @@ import { BillDetailComponent } from './component/bill-detail/bill-detail.compone
     ListScheduleComponent,
     ScheduleManagementComponent,
     PayScreenComponent,
-    BillManagementComponent,
     TransactionComponent,
     PaypalComponent,
     PaymentSuccessfulComponent,
     TransactionHistoryComponent,
     FooterComponent,
-    BillDetailComponent
+    BillDetailComponent,
   ],
   imports: [
     BrowserModule,

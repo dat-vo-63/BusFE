@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GetInfo } from 'src/app/model/get-info';
 import { CustomerService } from 'src/app/service/customer.service';
 
@@ -22,11 +23,11 @@ export class TransactionHistoryComponent {
   ngOnInit(): void {
     this.customerService.getAllBillByEmail(localStorage.getItem("email")).subscribe(res => {
       this.listBill = res
-      this.collectionSize = this.listBill.length / this.pageSize
+      this.collectionSize = this.listBill.length
     })
   }
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private router: Router) { }
 
   searchBillById() {
     this.customerService.searchBillById(this.searchBillForm.value.billId, localStorage.getItem("email")).subscribe(res => {
@@ -38,5 +39,9 @@ export class TransactionHistoryComponent {
     this.customerService.searchBillByStartDate(`${this.searchBillForm.value.startDate.year}/${this.searchBillForm.value.startDate.month}/${this.searchBillForm.value.startDate.day}`, localStorage.getItem("email")).subscribe(res => {
       this.listBill = res
     })
+  }
+
+  openDetail(bill: GetInfo) {
+    this.router.navigate(['admin/bill-detail', bill.billId])
   }
 }

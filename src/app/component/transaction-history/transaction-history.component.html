@@ -27,6 +27,7 @@
                 <th>Phone Number</th>
                 <th>Bus Name</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +41,10 @@
                 <td>{{bill.userPhone}}</td>
                 <td>{{bill.busName}}</td>
                 <td>{{bill.status}}</td>
+                <td>
+                    <button type="button" (click)="openDetail(bill)" class="btn btn-primary" ngClass=""><i
+                            class="bi bi-info-circle"></i>Detail</button>
+                </td>
             </tr>
         </tbody>
     </table>

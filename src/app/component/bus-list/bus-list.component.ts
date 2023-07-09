@@ -39,7 +39,7 @@ export class BusListComponent implements OnInit {
   getAllBus() {
     this.adminService.getAllBus().subscribe(res => {
       this.listBus = res
-      this.collectionSize = this.listBus.length / this.pageSize
+      this.collectionSize = this.listBus.length
     })
   }
 

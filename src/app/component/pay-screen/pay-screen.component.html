@@ -5,7 +5,8 @@
                 <div class="card-body">
                     <div class="invoice-title">
                         <h4 class="float-end font-size-15">Invoice #{{bill.billId}} <span
-                                class="badge bg-success font-size-12 ms-2">{{bill.status}}</span></h4>
+                                class="badge bg-success font-size-12 ms-2"
+                                [ngClass]="{'bg-danger': bill.status === 'Not Pay'}">{{bill.status}}</span></h4>
                         <div class="mb-4">
                             <h1 class="mb-1 text-muted"><img src="../../../../assets/img/logo.png" width="30"
                                     height="30" class="d-inline-block align-top" alt="">
@@ -82,5 +83,5 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-</div>
