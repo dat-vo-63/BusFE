@@ -8,7 +8,7 @@ import { GetInfo } from '../model/get-info';
   providedIn: 'root'
 })
 export class CustomerService {
-  baseUrl = "http://localhost:9090"
+  baseUrl = "http://busdocker.onrender.com"
   registerUrl = "add-user"
   loginUrl = "login"
   editProfileUrl = ""

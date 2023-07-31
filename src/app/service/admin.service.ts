@@ -12,7 +12,7 @@ import { GetInfo } from '../model/get-info';
   providedIn: 'root'
 })
 export class AdminService {
-  baseUrl = "http://localhost:9090"
+  baseUrl = "http://busdocker.onrender.com"
   addScheduleUrl = "add/schedule"
   findAllBusUrl = "findAllBus"
   addBusUrl = "add"
